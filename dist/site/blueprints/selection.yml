@@ -1,0 +1,29 @@
+title: Selection
+
+files: false
+pages: false
+
+options:
+  preview: true
+  status: false
+  template: false
+  url: false
+  delete: false
+
+icon: star
+
+fields:
+  title:
+    label: Title
+    type:  text
+    readonly: true
+
+  projects:
+    label: Selected projects
+    type: checkboxes 
+    options: query
+    query:
+      page:  /
+      fetch: grandchildren
+      value: '{{slug}}'
+      columns: 3

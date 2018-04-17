@@ -1,0 +1,14 @@
+{
+  "name": "MatthiasOertel",
+  "version": "1.0.0",
+  "desription": "Website for Matthias Oertel",
+  "main": "index.html",
+  "author": "W.A.F.",
+  "License": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

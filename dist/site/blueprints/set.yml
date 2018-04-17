@@ -1,0 +1,9 @@
+title: Set
+
+files: false
+
+fields:
+  title:
+    label: Title
+    type:  text
+    help: Category of this Set

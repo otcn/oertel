@@ -1,0 +1,19 @@
+title: Project
+
+pages: false
+files: true
+  sortable: true
+  fields:
+    favorite:
+      label: Favorite
+      type: checkbox
+      text: Check to display image in the selection set
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  copy:
+    label: Copy
+    type:  text

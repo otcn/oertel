@@ -1,0 +1,26 @@
+title: Site
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  author:
+    label: Author
+    type:  text
+
+  email:
+    label: Email
+    type: email
+
+  phone:
+    label: Phone
+    type: tel
+
+  description:
+    label: Description
+    type:  textarea
+    
+  copyright:
+    label: Copyright
+    type:  textarea
