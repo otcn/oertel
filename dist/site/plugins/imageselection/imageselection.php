@@ -9,7 +9,7 @@ class imageselection {
         
         foreach ($site->grandChildren() as $project) {
 	        foreach ($project->images() as $image) {
-		        $result[$image->name()] = $image->url();
+		        $result[$image->url()] = $image;
 	        }
         }
 				

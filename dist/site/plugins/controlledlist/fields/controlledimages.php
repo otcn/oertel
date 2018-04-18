@@ -1,44 +1,52 @@
 <?php
 
-class ControlledImagesField extends InputListField {
-	
-  public function value() {
-    $value = parent::value();
-    if(empty($value)) {
-      // get the first key of options
-      $options = $this->options();
-      if(is_array($options)) {
-        reset($options);
-        $value = key($options);        
-      }
+class ControlledimagesField extends RadioField {
+  public function options() {
+			return call_user_func($this->controller, $this);
+		}
+
+  static public $assets = array(
+    'css' => array(
+      'controlledimages.css'   // /path/to/field/assets/css/styles.css
+    )
+  );
+
+  public function content() {
+
+    $html = '<ul class="controlledimages">';
+
+    switch($this->columns()) {
+      case 2:
+        $width = ' field-grid-item-1-2';
+        break;
+      case 3:
+        $width = ' field-grid-item-1-3';
+        break;
+      case 4:
+        $width = ' field-grid-item-1-4';
+        break;
+      case 5:
+        $width = ' field-grid-item-1-5';
+        break;
+      default:
+        $width = '';
+        break;
     }
-    return $value;
-      
-  }
 
-  public function input() {
-
-    $val   = func_get_arg(0);
-    $input = parent::input();
-    $input->addClass('radio');
-    $input->attr('type', 'radio');
-    $input->val($val);
-
-    if($this->readonly) {
-      $input->attr('disabled', true);      
+    foreach($this->options() as $key => $value) {
+      $html .= '<li>';
+      $html .= $this->item($key, $value);
+      $html .= '</li>';
     }
 
-    $input->attr('checked', $val == $this->value());
-    return $input;
+    $html .= '</ul>';
+
+    $content = new Brick('div');
+    $content->addClass('field-content');
+    $content->append($html);
+
+    return $content;
 
   }
-
-  public function item($value, $text) {
-    $item = parent::item($value, $text);
-    $item->addClass('input-with-radio');
-    return $item;
-  }
-  
-
 
 }

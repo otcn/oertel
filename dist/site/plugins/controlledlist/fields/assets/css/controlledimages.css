@@ -1,0 +1,27 @@
+ul.controlledimages {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 100%;
+	padding: 0 .75em;
+}
+
+ul.controlledimages li {
+	margin: 10px;
+	text-align: center;
+}
+
+
+body.ltr .input-with-radio .radio {
+	margin: 0;
+}
+
+ul.controlledimages li span {
+	display: block;
+}
+
+
+ul.controlledimages li img {
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
+}
