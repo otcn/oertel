@@ -1,6 +1,8 @@
 title: Home
 
+files: false
 pages: false
+hide: true
 
 fields:
   title:

@@ -1,0 +1,10 @@
+.DS_Store
+.sass-cache/
+dist/.htaccess
+node_modules/
+dist/kirby
+dist/panel
+dist/thumbs
+dist/site/accounts/
+dist/assets/avatars/
+dist/content/

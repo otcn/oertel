@@ -9,6 +9,8 @@ files: true
       type: checkbox
       text: Check to display image in the selection set
 
+icon: image
+
 fields:
   title:
     label: Title

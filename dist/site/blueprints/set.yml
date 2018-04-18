@@ -1,6 +1,10 @@
 title: Set
 
 files: false
+pages:
+	template: project
+
+icon: images
 
 fields:
   title:

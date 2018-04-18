@@ -1,5 +1,8 @@
 title: Site
 
+pages:
+	template: set
+
 fields:
   title:
     label: Title

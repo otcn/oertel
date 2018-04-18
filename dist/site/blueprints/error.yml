@@ -1,6 +1,7 @@
 title: Error
 
 pages: false
+hide: true
 
 fields:
   title:
