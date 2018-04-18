@@ -18,16 +18,16 @@
 
             } else {
 
-              /* For selection set */
-              $favedImages = $site->grandChildren()->visible()->files()->filterBy('favorite','1');
-              $projects = array();
+            	foreach ($set->selectedImages()->toStructure() as $image) {
+	          ?>
+	          
+	          <figure>
+							<img class="portrait" src="<?= $image ?>" alt="">
+						</figure>
 
-              foreach ($favedImages as $favedImage) {
-                if (!in_array($favedImage->page()->uid(), $projects)) {
-                  snippet('project', array('project' => $favedImage->page(), 'favesOnly' => true));
-                  array_push($projects, $favedImage->page()->uid());
-                }
-              }
+						<?php
+	            
+            	}
           
             }
           ?>

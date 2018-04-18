@@ -13,17 +13,23 @@ options:
 icon: star
 
 fields:
+
   title:
     label: Title
     type:  text
     readonly: true
-
-  projects:
-    label: Selected projects
-    type: checkboxes 
-    options: query
-    query:
-      page:  /
-      fetch: grandchildren
-      value: '{{slug}}'
-      columns: 3
+    
+  test:
+  	label: test
+  	type: controlledimages
+    
+  selectedImages:
+    label: Selected Images
+    type: structure
+    entry: >
+      <img height="60" src="{{img}}"/> {{img}}
+    fields:
+      img:
+        label: Image
+        type: controlledimages
+        controller: imageselection::imagelist
