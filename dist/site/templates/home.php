@@ -14,19 +14,14 @@
 
               /* For normal sets */
               foreach ($set->children() as $project) {
-                snippet('project', array('project' => $project, 'favesOnly' => false));
+                snippet('project', array('project' => $project));
               }
 
             } else {
 
-            	foreach ($set->selectedImages()->toStructure() as $image) {
-                ?>
-                  <figure>
-                    <img class="portrait" src="<?= $image ?>" alt="">
-                  </figure>
-                <?php
-            	}
-          
+            	foreach ($set->selectedImages()->toStructure() as $imageURL) {
+								snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'hoverTitle' => 'Selection image'));
+							}
             }
           ?>
         </div>

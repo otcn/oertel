@@ -16,7 +16,6 @@ public $type = 'text';
   );
 
   public function inputField($value) {
-
     $input = new Brick('input', null);
     $input->addClass('input');
     $input->attr(array(

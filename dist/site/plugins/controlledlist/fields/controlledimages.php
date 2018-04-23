@@ -7,7 +7,7 @@ class ControlledimagesField extends RadioField {
 
   static public $assets = array(
     'css' => array(
-      'controlledimages.css'   // /path/to/field/assets/css/styles.css
+      'controlledimages.css'
     )
   );
 
@@ -32,7 +32,7 @@ class ControlledimagesField extends RadioField {
         $width = '';
         break;
     }
-
+    
     foreach($this->options() as $key => $value) {
       $html .= '<li>';
       $html .= $this->item($key, $value);
