@@ -107,11 +107,19 @@ a {
 			border-top: 1px solid rgb(128, 128, 128);
 			border-bottom: 1px solid rgb(128, 128, 128);;
 			border-right: 1px solid rgb(128, 128, 128);
+			background-color: white;
 		
 			min-height: 70px;
 			margin-bottom: 70px;
 
 			padding-top: 10px;
+
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+
+			#hovered-title {
+			}
 		}
 
 		&:last-child {
@@ -121,12 +129,14 @@ a {
 		}
 
 		.project-head {
-			// display: none;
+			display: none;
 		}
 		
 		img {
 			display: block;
 			margin: 0 auto 70px auto;
+
+			cursor: pointer;
 		}
 
 		.portrait {

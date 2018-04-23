@@ -8,11 +8,3 @@ fields:
   title:
     label: Title
     type:  text
-
-  about:
-    label: About
-    type:  textarea
-
-  clients:
-    label: Clients
-    type:  textarea

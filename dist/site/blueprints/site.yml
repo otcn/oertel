@@ -20,10 +20,10 @@ fields:
     label: Phone
     type: tel
 
-  description:
-    label: Description
+  about:
+    label: About
     type:  textarea
     
-  copyright:
-    label: Copyright
+  clients:
+    label: Clients
     type:  textarea

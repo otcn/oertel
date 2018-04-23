@@ -5,6 +5,7 @@
       <section class="set s">
         <div class="set-head">
           <h3> <?= $set->title() ?> </h3>
+          <p></p>
         </div>
 
         <div class="project">
@@ -19,14 +20,11 @@
             } else {
 
             	foreach ($set->selectedImages()->toStructure() as $image) {
-	          ?>
-	          
-	          <figure>
-							<img class="portrait" src="<?= $image ?>" alt="">
-						</figure>
-
-						<?php
-	            
+                ?>
+                  <figure>
+                    <img class="portrait" src="<?= $image ?>" alt="">
+                  </figure>
+                <?php
             	}
           
             }
@@ -35,14 +33,13 @@
       </section>
     <?php endforeach ?>
 </div>
-
-<!-- CODE FOR ZOOM.JS -->
-<?= js('assets/js/zoom.js') ?>
 <script>
-  document.querySelector('.page-body').addEventListener('click', function(event) {
-    event.preventDefault();
-    zoom.to({ element: event.target });
-  });
-</script>
 
+			document.querySelector( '.page-body' ).addEventListener( 'click', function( event ) {
+        event.preventDefault();
+        console.log(event.target);
+				zoom.to({ element: event.target });
+			} );
+		
+  </script>
 <?php snippet('footer') ?>
