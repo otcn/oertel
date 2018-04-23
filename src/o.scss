@@ -104,9 +104,9 @@ a {
 
 	.set {
 		.set-head {
-			border-top: 2px solid rgb(128, 128, 128);
-			border-bottom: 2px solid rgb(128, 128, 128);;
-			border-right: 2px solid rgb(128, 128, 128);
+			border-top: 1px solid rgb(128, 128, 128);
+			border-bottom: 1px solid rgb(128, 128, 128);;
+			border-right: 1px solid rgb(128, 128, 128);
 		
 			min-height: 70px;
 			margin-bottom: 70px;
@@ -121,7 +121,7 @@ a {
 		}
 
 		.project-head {
-			display: none;
+			// display: none;
 		}
 		
 		img {

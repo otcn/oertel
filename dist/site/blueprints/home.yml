@@ -2,7 +2,7 @@ title: Home
 
 files: false
 pages: false
-hide: true
+hide: false
 
 fields:
   title:
