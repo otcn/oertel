@@ -9,9 +9,7 @@
 
   <?= css('assets/css/o.css') ?>
 
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <?= js('assets/js/zoom.js') ?>
   <?= js('assets/js/o.min.js') ?>
 </head>
 

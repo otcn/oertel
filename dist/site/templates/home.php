@@ -33,13 +33,4 @@
       </section>
     <?php endforeach ?>
 </div>
-<script>
-
-			document.querySelector( '.page-body' ).addEventListener( 'click', function( event ) {
-        event.preventDefault();
-        console.log(event.target);
-				zoom.to({ element: event.target });
-			} );
-		
-  </script>
 <?php snippet('footer') ?>
