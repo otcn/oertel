@@ -103,6 +103,20 @@ a {
 	padding-top: 5px;
 
 	.set {
+		background: pink;
+		box-sizing: border-box;
+		border: 1px solid #fff;
+		
+		&.zoomed {
+			position: absolute;
+			width: 100vw;
+			left: 0;
+			top: 0;
+			background: #fff;
+			z-index: 20;
+			
+		}
+		
 		.set-head {
 			border-top: 1px solid rgb(128, 128, 128);
 			border-bottom: 1px solid rgb(128, 128, 128);;
@@ -166,6 +180,16 @@ a {
 			width: 14vw;
 		}
 	}
+}
+
+.overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #fff;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
 }
 
 .mobile-page-body, .mobile-page-header {

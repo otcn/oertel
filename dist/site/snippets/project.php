@@ -5,6 +5,7 @@
   </div>
 
   <?php foreach($project->files()->sortBy('sort', 'asc') as $image): ?>
-    <?php snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'hoverTitle' => $project->title()->html())); ?>
+  	<?= $project->page() ?>
+    <?php snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title()->html())); ?>
   <?php endforeach ?>
 </div>
