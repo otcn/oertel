@@ -8,23 +8,21 @@
           <p></p>
         </div>
 
-        <div class="project">
-          <?php
-            if($set->uid() != 'selection') {
+        <?php
+          if($set->uid() != 'selection') {
 
-              /* For normal sets */
-              foreach ($set->children() as $project) {
-                snippet('project', array('project' => $project));
-              }
-
-            } else {
-
-            	foreach ($set->selectedImages()->toStructure() as $imageURL) {
-								snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'hoverTitle' => 'Selection image'));
-							}
+            /* For normal sets */
+            foreach ($set->children() as $project) {
+              snippet('project', array('project' => $project));
             }
-          ?>
-        </div>
+
+          } else {
+
+            foreach ($set->selectedImages()->toStructure() as $imageURL) {
+              snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'hoverTitle' => 'Selection image'));
+            }
+          }
+        ?>
       </section>
     <?php endforeach ?>
   </div>
@@ -38,23 +36,21 @@
           <i class="fas fa-caret-right"></i>
         </div>
 
-        <div class="project">
-          <?php
-            if($set->uid() != 'selection') {
+        <?php
+          if($set->uid() != 'selection') {
 
-              /* For normal sets */
-              foreach ($set->children() as $project) {
-                snippet('project', array('project' => $project));
-              }
-
-            } else {
-
-            	foreach ($set->selectedImages()->toStructure() as $imageURL) {
-								snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'hoverTitle' => 'Selection image'));
-							}
+            /* For normal sets */
+            foreach ($set->children() as $project) {
+              snippet('project', array('project' => $project));
             }
-          ?>
-        </div>
+
+          } else {
+
+            foreach ($set->selectedImages()->toStructure() as $imageURL) {
+              snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'hoverTitle' => 'Selection image'));
+            }
+          }
+        ?>
       </section>
     <?php endforeach ?>
   </div>
