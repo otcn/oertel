@@ -280,4 +280,28 @@ $(document).ready(function(){
 	}).mouseleave(function() {
 		$('.set-head p').text('');
 	});
+
+
+	// Slick slider for mobile version
+	$('.mobile-page-body').slick({
+		infinite: true,
+		adaptiveHeight: true,
+		arrows: false,
+	});
+
+	$('.fa-caret-left').click(function(){
+		$('.mobile-page-body').slick('slickPrev');
+	})
+	
+	$('.fa-caret-right').click(function(){
+		$('.mobile-page-body').slick('slickNext');
+	})
+
+
+	// Function to show an dhide information
+	$('.info').hide();
+
+	$('.fa-info-circle').click(function() {
+		$('.info').toggle();
+	});
 });

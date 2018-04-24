@@ -11,6 +11,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <?= js('assets/js/o.min.js') ?>
+
+  <!-- Mobile -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 
 <body>
@@ -41,6 +46,31 @@
         <h2>Clients</h2>
         <?= $page->clients()->kirbytext() ?>
       </div>
+    </div>
+  </header>
+
+
+
+  <!-- Mobile header -->
+  <header class="mobile-page-header">
+    <div class="author">
+      <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
+    </div>
+
+     <i class="far fa-info-circle"></i>
+
+    <div class="info">
+      <div class="about l">
+        <?= $page->about()->kirbytext() ?>
+      </div>
+
+      <div class="clients l">
+        <h2>Clients</h2>
+        <?= $page->clients()->kirbytext() ?>
+      </div>
+
+      <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
+      <h4> <?= $site->phone()->html() ?> </h4>
     </div>
   </header>
 </body>
