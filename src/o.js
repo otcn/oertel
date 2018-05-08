@@ -25,10 +25,6 @@ $(document).ready(function(){
 	});
 	*/
 	
-	
-	
-	
-
 
 	// Slick slider for mobile version
 	$('.mobile-page-body').slick({

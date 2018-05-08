@@ -99,22 +99,19 @@ a {
 // content
 
 .page-body {
-
 	padding-top: 5px;
 
 	.set {
 		background: pink;
 		box-sizing: border-box;
-		border: 1px solid #fff;
+		-webkit-transition: all 500ms ease;
 		
 		&.zoomed {
-			position: absolute;
 			width: 100vw;
 			left: 0;
 			top: 0;
 			background: #fff;
 			z-index: 20;
-			
 		}
 		
 		.set-head {
@@ -129,6 +126,7 @@ a {
 			padding-top: 10px;
 
 			position: -webkit-sticky;
+			position: -moz-sticky;
 			position: sticky;
 			top: 0;
 
@@ -150,8 +148,13 @@ a {
 			margin-bottom: 5px;
 
 			position: -webkit-sticky;
+			position: -moz-sticky;
 			position: sticky;
-			top: 100px;
+			top: 0;
+			
+			&:first-child {
+				border-top: 0;
+			}
 
 			p {
 				width: 10%;

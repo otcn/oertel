@@ -1,6 +1,6 @@
 <?php snippet('header') ?>
 
-  <div class="page-body flex">
+  <div id="content" class="page-body flex">
     <?php foreach ($pages->visible() as $set): ?>
       <section class="set s" id="<?= $set->uid() ?>">
         <div class="set-head">
