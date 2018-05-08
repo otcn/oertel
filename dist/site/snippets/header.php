@@ -50,6 +50,8 @@
     </div>
   </header>
 
+  <div id="faderOverlay"></div>
+
 
 
   <!-- Mobile header -->

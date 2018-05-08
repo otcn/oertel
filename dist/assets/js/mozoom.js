@@ -8,21 +8,31 @@ function Mozoom () {
 		console.log('+ zooming');
 		console.log('- '+$(targetSet));
 		console.log('- '+targetImage);
-		
+
+		// Make sure the div: #faderOverlay will not cover the target Set
+		targetSet.css({ "z-index": "20" });
+
 		// hide navigation headers		
-		targetSet.children('.set-head').hide();
-		
-		targetSet.css({
-			// setze top auf die aktuelle vertikale position des elements
-			// setze left auf die aktuelle horizontale position des elements	
-		})
-		.css({
-			// setze position auf absolute
+		targetSet.children('.set-head').fadeOut(400);
+
+		$('#faderOverlay').fadeIn(400, function() {
+			// Get values for top and left position of target …
+			var offset = targetSet.offset();
+
+			// … and apply them to css
+			targetSet
+				.css({ "left": offset.left + "px", "top": offset.top + 140 + "px" })
+				.css({ "position": "absolute" })
+				.animate({
+						"left": "0",
+						"top": "0",
+						"width": "100vw"
+				}, 800 )
+				.find('.landscape').animate({ "width": "50vw" }, 800 );
 		});
 		
-		// zoom set
-		targetSet.removeClass(this.setSizeClass).addClass('zoomed');
 		
+			
 		// prevent visible page body in case page is taller than the zoomed set
 		//this.setContainer.css('max-height', $(window).height());
 	}
