@@ -16,13 +16,13 @@ module.exports = function (grunt) {
 		  }
 		},
 
-		uglify: { 
-    	fun: { 
-				files: { 
-					'dist/assets/js/o.min.js' : ['src/zoom.js', 'src/o.js'] 
-				} 
-    	} 
-  	},
+		uglify: {
+		  my_target: {
+		    files: {
+		      'dist/assets/js/o.min.js': ['src/o.js']
+		    }
+		  }
+		},
 
 		watch: {
 		  css: {

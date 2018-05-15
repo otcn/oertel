@@ -150,6 +150,7 @@ a {
 			padding-top: 10px;
 			font-size: 3pt;
 			margin-bottom: 5px;
+			display: none;
 
 			position: -webkit-sticky;
 			position: -moz-sticky;
@@ -165,11 +166,9 @@ a {
 				background-color: white;
 			}
 		}
-		
 
 		figure {
-			padding-top: 70px;
-			padding-bottom: 70px;
+
 		}
 		
 		img {
@@ -177,6 +176,9 @@ a {
 			margin: 0 auto;
 
 			cursor: pointer;
+
+			// margin-top: 60px;
+			margin-bottom: 120px;
 		}
 
 		.portrait {

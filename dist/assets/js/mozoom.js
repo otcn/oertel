@@ -2,12 +2,23 @@
 function Mozoom () {
 	this.setSizeClass = 's'										//
 	this.setContainer = $('#content');				// define wrapper container
+
+	// store original image height including margin
+	$('.set').each(function(){
+		$(this).find('img').each(function(){
+			$(this).data({
+				'ogOuterHeight': $(this).outerHeight(true),
+				'ratio': $(this).height()/$(this).width()
+			});
+		})
+	})
+
 }
 
 	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
-		console.log('+ zooming');
+		/* console.log('+ zooming');
 		console.log('- '+$(targetSet));
-		console.log('- '+targetImage);
+		console.log('- '+targetImage); */
 
 		// Make sure the div: #faderOverlay will not cover the target Set
 		targetSet.css({ "z-index": "20" });
@@ -16,7 +27,7 @@ function Mozoom () {
 		targetSet.children('.set-head').fadeOut(400);
 
 		$('#faderOverlay').fadeIn(400, function() {
-			// Get values for top and left position of target …
+			// Get values for top and left position of target Set …
 			var offset = targetSet.offset();
 
 			// … and apply them to css
@@ -27,10 +38,43 @@ function Mozoom () {
 						"left": "0",
 						"top": "0",
 						"width": "100vw"
-				}, 800 )
-				.find('.landscape').animate({ "width": "50vw" }, 800 );
+				}, 800)
+				.find('.landscape')
+					.animate({ 
+						"width": "50vw",
+						"margin-bottom": "300px"
+					}, 800)
+					.end()
+				.find('.portrait')
+					.animate({ 
+						"height": "90vh",
+						"margin-bottom": "300px"
+					}, 800, function(){
+
+					});
+
+					var scrollTarget = 0;				
+
+					targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function(){
+						if ($(this).hasClass('portrait')) {
+							factor = ($(window).height()*.9) + 300;
+						} else {
+							factor = $(window).width()*.5*$(this).data('ratio') + 300;
+						}
+					
+						scrollTarget += factor;
+					});
+
+					console.log(scrollTarget);
+					
+
+					$('html, body').animate({
+						scrollTop: scrollTarget
+					}, 800);
+
+
+
 		});
-		
 		
 			
 		// prevent visible page body in case page is taller than the zoomed set
