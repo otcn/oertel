@@ -6,13 +6,13 @@ class imageselection {
         $site = $kirby->site();
         
         $result = array();
+    
         
         foreach ($site->grandChildren() as $project) {
 	        foreach ($project->images() as $image) {
-		        $result[$image->url()] = $image;
+                $result[$image->url()] = $image;
 	        }
         }
-				
         return $result;
     }
 }
