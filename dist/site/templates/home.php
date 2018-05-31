@@ -1,6 +1,16 @@
 <?php snippet('header') ?>
 
   <div id="content" class="page-body flex">
+	  <?php
+		  	// grab a full set of all used images, just in case
+		  	// still needs error handling in case no images are visible or none are selected for selection
+		  	$portfolioImages = new Files($page);
+		  
+        foreach ($site->grandChildren()->visible() as $project) {
+	        $portfolioImages->data = array_merge($portfolioImages->data, $project->images()->data);
+        }
+		?>
+	  
     <?php foreach ($pages->visible() as $set): ?>
       <section class="set s" id="<?= $set->uid() ?>">
         <div class="set-head">
@@ -9,17 +19,24 @@
         </div>
 
         <?php
-          if($set->uid() != 'selection') {
+          if ($set->uid() != 'selection') {
 
-            /* For normal sets */
+            // For normal sets
             foreach ($set->children() as $project) {
               snippet('project', array('project' => $project));
             }
 
           } else {
-
+						
+						// for the selection
             foreach ($set->selectedImages()->toStructure() as $imageURL) {
-              snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'project' => 'selection', 'set' => 'selection', 'hoverTitle' => 'Selection image'));
+	            
+	            // get parent page of selection image
+							$filename = explode('/',$imageURL);
+							$str = array_pop($filename);
+	            $parent = $portfolioImages->find($str)->page();
+	            
+							snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'project' => $parent, 'set' => $parent->parent(), 'hoverTitle' => 'Selection image'));
             }
           }
         ?>
