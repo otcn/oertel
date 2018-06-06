@@ -56,7 +56,7 @@
 
 
   <!-- Mobile header -->
-  <header class="mobile-page-header">
+  <header id="mobile-page-header" class="mobile-page-header">
     <div class="author">
       <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
     </div>
