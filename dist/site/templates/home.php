@@ -36,7 +36,7 @@
 							$str = array_pop($filename);
 	            $parent = $portfolioImages->find($str)->page();
 	            
-							snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'project' => $parent, 'set' => $parent->parent(), 'hoverTitle' => 'Selection image'));
+							snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'project' => $parent, 'set' => 'selection', 'hoverTitle' => 'Selection image'));
             }
           }
         ?>
