@@ -147,26 +147,28 @@ a {
 
 		.project-head {
 			border-top: 1px solid rgb(128, 128, 128);
-			padding-top: 10px;
 			font-size: 3pt;
-			margin-bottom: 5px;
 			display: none;
+			min-height: 65px;
+			margin-top: -65px;
+			width: 20%;
 
 			position: -webkit-sticky;
 			position: -moz-sticky;
 			position: sticky;
-			top: 0;
+			top: 10px;
 			
 			&:first-child {
 				border-top: 0;
 			}
 
 			p {
-				width: 10%;
 				background-color: white;
+				font-size: 3.1em;
 
 				&:first-child {
-					
+					text-transform: uppercase;
+					margin-bottom: 10px;
 				}
 			}
 		}

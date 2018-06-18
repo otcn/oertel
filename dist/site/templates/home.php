@@ -14,8 +14,10 @@
     <?php foreach ($pages->visible() as $set): ?>
       <section class="set s" id="<?= $set->uid() ?>">
         <div class="set-head">
+          <i class="fas fa-caret-left"></i>
           <h3> <?= $set->title() ?> </h3>
           <p></p>
+          <i class="fas fa-caret-right"></i>
         </div>
 
         <?php
@@ -34,9 +36,11 @@
 	            // get parent page of selection image
 							$filename = explode('/',$imageURL);
 							$str = array_pop($filename);
-	            $parent = $portfolioImages->find($str)->page();
+              $parent = $portfolioImages->find($str)->page();
+              $orientation = $portfolioImages->find($str)->orientation();
+              $title = $portfolioImages->find($str)->title();
 	            
-							snippet('image', array('url' => $imageURL, 'orientation' => 'portrait', 'project' => $parent, 'set' => 'selection', 'hoverTitle' => 'Selection image'));
+							snippet('image', array('url' => $imageURL, 'orientation' => $orientation, 'project' => $parent, 'set' => 'selection', 'hoverTitle' => $title));
             }
           }
         ?>

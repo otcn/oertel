@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 	$('#overlay').hide();
+	$('.set-head i').hide();
 
 	var mo = new Mozoom();
 	var portfolioImages = $('.set figure');
@@ -32,6 +33,17 @@ $(document).ready(function(){
 	var conditionallySlick = debounce(function() {
 		if ($('#mobile-page-header').is(':visible')) {
 			$('.page-body').slick(slickOptions);
+
+			// navigate slick slider
+			$('.set-head i').show();
+
+			$('.fa-caret-left').click(function(){
+				$('.page-body').slick('slickPrev');
+			})
+			
+			$('.fa-caret-right').click(function(){
+				$('.page-body').slick('slickNext');
+			})
 		} else {
 			$('.page-body').slick('unslick');
 		}
@@ -50,16 +62,19 @@ $(document).ready(function(){
 		var targetSet = '#'+$(this).data('set');
 		mo.zoomToggle($(targetSet), $(this));
 	});
-	
-	// navigate slick slider
-	$('.fa-caret-left').click(function(){
-		$('.mobile-page-body').slick('slickPrev');
-	})
-	
-	$('.fa-caret-right').click(function(){
-		$('.mobile-page-body').slick('slickNext');
-	})
 
+	// Show the title of project on image hover
+	$('img').mouseenter(function() {
+		$(this).parents('.project').siblings('.set-head').children('p').text($(this).data('title'));
+	}).mouseleave(function() {
+		$('.set-head p').text('');
+	});
+
+
+
+
+
+	
 	// Function to show and hide information
 	$('.info').hide();
 

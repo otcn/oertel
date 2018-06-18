@@ -92,6 +92,19 @@ function Mozoom () {
 			$('html, body').animate({
 				scrollTop: scrollTarget
 			}, 800);
+
+			// Fade in project header on scroll when zoomed in
+			$('html, body').animate({scrollTop: scrollTarget}, 800, function(){
+				var distance = targetImage.offset().top;
+	
+				$(window).on("scroll", function() {
+					if ($(this).scrollTop() >= distance ) {
+						console.log('is in top');
+	
+						$('.project-head').fadeIn();
+					}
+				});
+			});
 		});
 		
 			
@@ -100,16 +113,6 @@ function Mozoom () {
 
 		// Add class to describe current state of set
 		targetSet.addClass('setZoomed');
-
-		/* $(document).scroll(function () {
-
-			var y = $(this).scrollTop();
-			if (y > 20) {
-					$('.project-head').fadeIn();
-			} else {
-					$('.bottomMenu').fadeOut();
-			}
-		}); */
 	}
 	
 
@@ -164,6 +167,12 @@ function Mozoom () {
 
 		// Remove class to describe current state of set
 		targetSet.removeClass('setZoomed');
+
+		// Make sure the scroll function is not inactive when not zoomed in
+		$(window).unbind("scroll");
+
+		// Fade out project head when not zoomed
+		$('.project-head').fadeOut();
 	};
 	
 
