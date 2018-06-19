@@ -68,10 +68,12 @@ function Mozoom () {
 				if ($(this).hasClass('portrait')) {
 					factor = ($(window).height()*.9) + 300;
 				} else {
-					factor = $(window).width()*.5*$(this).data('ratio') + 300;
+					factor = $(window).width()* .5 * 0.666 + 300;
+					/* $(this).data('ratio') */
 				}
-			
-				scrollTarget += factor;
+
+				scrollTarget += Math.ceil(factor);
+				console.log('ScrollTarget: ' + scrollTarget);
 			});
 
 			// Calculate the height of zoomed targetImage 
@@ -91,22 +93,29 @@ function Mozoom () {
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, 800);
+			}, 800).delay(50).queue(function(){
+				targetSet.find('.project-head').fadeIn();
+				$(window).unbind("scroll");
+			});
+		});	
 
-			// Fade in project header on scroll when zoomed in
-			$('html, body').animate({scrollTop: scrollTarget}, 800, function(){
-				var distance = targetImage.offset().top;
-	
+
+
+
+			/*
+
+			.delay(50).queue(function(){
 				$(window).on("scroll", function() {
-					if ($(this).scrollTop() >= distance ) {
-						console.log('is in top');
-	
-						$('.project-head').fadeIn();
-					}
+					targetSet.find('.project-head').fadeIn();
+					$(window).unbind("scroll");
+					console.log('done');
 				});
 			});
-		});
-		
+
+			*/
+
+
+
 			
 		// Prevent visible page body in case page is taller than the zoomed set
 		this.setContainer.css('max-height', $(window).height());
@@ -124,7 +133,8 @@ function Mozoom () {
 
 	Mozoom.prototype.zoomOut = function(targetSet, targetImage) {
 
-		console.log(ogOffset);
+		// Fade out project head when not zoomed
+		$('.project-head').fadeOut();
 
 		targetSet
 			.animate({
@@ -167,12 +177,6 @@ function Mozoom () {
 
 		// Remove class to describe current state of set
 		targetSet.removeClass('setZoomed');
-
-		// Make sure the scroll function is not inactive when not zoomed in
-		$(window).unbind("scroll");
-
-		// Fade out project head when not zoomed
-		$('.project-head').fadeOut();
 	};
 	
 

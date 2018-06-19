@@ -31,17 +31,30 @@
           } else {
 						
 						// for the selection
-            foreach ($set->selectedImages()->toStructure() as $imageURL) {
-	            
-	            // get parent page of selection image
-							$filename = explode('/',$imageURL);
-							$str = array_pop($filename);
-              $parent = $portfolioImages->find($str)->page();
-              $orientation = $portfolioImages->find($str)->orientation();
-              $title = $portfolioImages->find($str)->title();
-	            
-							snippet('image', array('url' => $imageURL, 'orientation' => $orientation, 'project' => $parent, 'set' => 'selection', 'hoverTitle' => $title));
-            }
+            foreach ($set->selectedImages()->toStructure() as $imageURL): ?>
+              
+              <?php
+                // get parent page of selection image
+                $filename = explode('/',$imageURL);
+                $str = array_pop($filename);
+                $parent = $portfolioImages->find($str)->page();
+
+                $orientation = $portfolioImages->find($str)->orientation();
+                $projectTitle = $parent->title();
+                $projectCopy = $parent->copy()->kirbytext();
+              ?>
+
+              <div class="project">
+                <div class="project-head">
+                  <?= $projectTitle->kirbytext() ?>
+                  <?= $projectCopy->kirbytext()?>
+                </div>
+
+                <?php snippet('image', array('url' => $imageURL, 'orientation' => $orientation, 'project' => $parent, 'set' => 'selection', 'hoverTitle' => $projectTitle)); ?>
+              </div>
+            <?php endforeach ?>
+
+            <?php
           }
         ?>
       </section>

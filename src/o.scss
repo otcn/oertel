@@ -268,13 +268,17 @@ a {
 			display: none;
 		}
 
-		img {
-			display: block;
-			margin: 0 auto 70px auto;
-
-			cursor: pointer;
-
-			width: 80%;
+		.page-body {
+			.set {
+				.landscape, .portrait {
+					display: block;
+					margin: 0 auto 70px auto;
+		
+					cursor: pointer;
+		
+					width: 80%;
+				}
+			}
 		}
 
 		.set-head {

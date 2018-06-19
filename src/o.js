@@ -46,6 +46,8 @@ $(document).ready(function(){
 			})
 		} else {
 			$('.page-body').slick('unslick');
+
+			$('.set-head i').hide();
 		}
 			
 	}, 250);
@@ -74,7 +76,7 @@ $(document).ready(function(){
 
 
 
-	
+
 	// Function to show and hide information
 	$('.info').hide();
 
