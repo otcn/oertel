@@ -73,22 +73,29 @@ function Mozoom () {
 				.animate({ 
 					"height": "90vh",
 					"margin-bottom": $zoomedImgMargin
-				}, $zoomMovement);
+				}, $zoomMovement)
+					.end()
+				.find('.project .project-head').animate({
+					'margin-bottom': '300px'
+				});
 
 			// Calculate height of all images (including margins) before TargetImage
 			// The top edge of targetImage is now equal to the top edge of the window
 			var scrollTarget = 0;				
 
-			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function(){
+			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {
 				
 				if ($(this).hasClass('portrait')) {
 					factor = ($(window).height() *.9) + $zoomedImgMargin;
-				} else {
+				} else if ($(this).hasClass('landscape')) {
 					factor = ($(window).width() * .5 * $(this).data('ratio')) + $zoomedImgMargin;
 				}
 
 				scrollTarget += factor;
 			});
+			
+			// Calculate project head heights			
+			scrollTarget += (targetImage.parent().prevAll('.project').length+1)*$zoomedImgMargin;
 
 			// Calculate the height of zoomed targetImage 
 			if (targetImage.children().hasClass('portrait')) {
@@ -107,8 +114,10 @@ function Mozoom () {
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, $zoomMovement).delay(50).queue(function(){
-				targetSet.find('.project-head').fadeIn();
+			}, $zoomMovement).delay(800).queue(function(){
+				targetSet.find('.project-head').animate({
+					'opacity': 1
+				})
 			});
 		});
 			

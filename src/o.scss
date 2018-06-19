@@ -156,8 +156,10 @@ a {
 
 		.project-head {
 			font-size: 3pt;
-			display: none;
-			margin-bottom: 250px;
+			margin-bottom: 0;
+			height: 0;
+			overflow: visible;
+			opacity: 0;
 
 			position: -webkit-sticky;
 			position: -moz-sticky;
