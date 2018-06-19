@@ -41,7 +41,8 @@
 
               <div class="project">
                 <div class="project-head">
-                  <?= $image->page()->title()->kirbytext() ?>
+                  <hr>
+                  <h5> <?= $image->page()->title() ?> </h5>
                   <?= $image->page()->projectCopy()->kirbytext() ?>
                 </div>
 

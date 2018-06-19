@@ -1,6 +1,7 @@
 <div class="project">
   <div class="project-head">
-    <?= $project->title()->kirbytext() ?>
+    <hr>
+    <h5> <?= $project->title() ?> </h5>
     <?= $project->copy()->kirbytext() ?>
   </div>
 

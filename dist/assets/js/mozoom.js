@@ -109,7 +109,10 @@ function Mozoom () {
 				scrollTop: scrollTarget
 			}, $zoomMovement).delay(50).queue(function(){
 				targetSet.find('.project-head').fadeIn();
-				$(window).unbind("scroll");
+				
+				$projectHead = targetImage.parents('.project').children('.project-head');
+				$projectHeadMargin = 300 - $projectHead.height();
+				$('.project-head').css({"margin-bottom": $projectHeadMargin})
 			});
 		});
 			

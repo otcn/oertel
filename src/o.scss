@@ -83,7 +83,7 @@ body {
 
 // typography
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, h5, p {
 	margin-left: 30px;
 }
 
@@ -94,6 +94,11 @@ h1, h2, h3, h4 {
 
 h2 {
 	padding: 5px 0;
+}
+
+h5 {
+	text-transform: uppercase;
+	margin-bottom: 5px;
 }
 
 p {
@@ -145,31 +150,23 @@ a {
 			}
 		}
 
+		hr {
+			margin-bottom: 12px;
+		}
+
 		.project-head {
-			border-top: 1px solid rgb(128, 128, 128);
 			font-size: 3pt;
 			display: none;
-			min-height: 65px;
-			margin-top: -65px;
-			width: 20%;
+			margin-bottom: 230px;
 
 			position: -webkit-sticky;
 			position: -moz-sticky;
 			position: sticky;
-			top: 10px;
-			
-			&:first-child {
-				border-top: 0;
-			}
+			top: -2px;
 
-			p {
-				background-color: white;
+			p, h5 {
 				font-size: 3.1em;
-
-				&:first-child {
-					text-transform: uppercase;
-					margin-bottom: 10px;
-				}
+				width: 15%;
 			}
 		}
 
