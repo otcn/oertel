@@ -14,6 +14,25 @@ function Mozoom () {
 
 }
 
+	/*
+		SET VARIABLES
+	*/
+
+		$(document).ready(function(){
+			// Define bottom margin for zoomded images
+			$zoomedImgMargin = 300;
+
+			// Define bottom margin for unzoomded images
+			$unZoomedImgMargin = 120;
+
+			// Define value for slow fade
+			$faderMovement = 400;
+
+			// Define value for slow fade
+			$zoomMovement = 400;
+		});
+
+
 
 	/*
 		ZOOM IN
@@ -27,13 +46,13 @@ function Mozoom () {
 		targetSet.css({ "z-index": "20" });
 
 		// Hide navigation headers		
-		targetSet.children('.set-head').fadeOut(400);
+		targetSet.children('.set-head').fadeOut($faderMovement);
 
 		// Get values for top and left position of target Set …
 		ogOffset = targetSet.offset();
 
 		// Fade in div: #faderOverlay with callback-function
-		$('#faderOverlay').fadeIn(400, function() {
+		$('#faderOverlay').fadeIn($faderMovement, function() {
 
 			// … and apply them to css
 			targetSet
@@ -43,18 +62,18 @@ function Mozoom () {
 					"left": "0",
 					"top": "0",
 					"width": "100vw"
-			}, 800)
+			}, $zoomMovement)
 			.find('.landscape')
 				.animate({ 
 					"width": "50vw",
-					"margin-bottom": "300px"
-				}, 800)
+					"margin-bottom": $zoomedImgMargin
+				}, $zoomMovement)
 				.end()
 			.find('.portrait')
 				.animate({ 
 					"height": "90vh",
-					"margin-bottom": "300px"
-				}, 800);
+					"margin-bottom": $zoomedImgMargin
+				}, $zoomMovement);
 
 			// Calculate height of all images (including margins) before TargetImage
 			// The top edge of targetImage is now equal to the top edge of the window
@@ -63,13 +82,12 @@ function Mozoom () {
 			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function(){
 				
 				if ($(this).hasClass('portrait')) {
-					factor = ($(window).height() *.9) + 300;
+					factor = ($(window).height() *.9) + $zoomedImgMargin;
 				} else {
-					factor = ($(window).width() * .5 * $(this).data('ratio')) + 300;
+					factor = ($(window).width() * .5 * $(this).data('ratio')) + $zoomedImgMargin;
 				}
 
-				scrollTarget += Math.ceil(factor);
-				console.log('ScrollTarget: ' + scrollTarget);
+				scrollTarget += factor;
 			});
 
 			// Calculate the height of zoomed targetImage 
@@ -89,26 +107,11 @@ function Mozoom () {
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, 800)/*.delay(50).queue(function(){
+			}, $zoomMovement).delay(50).queue(function(){
 				targetSet.find('.project-head').fadeIn();
 				$(window).unbind("scroll");
-			}) */;
-		});	
-
-			/*
-
-			.delay(50).queue(function(){
-				$(window).on("scroll", function() {
-					targetSet.find('.project-head').fadeIn();
-					$(window).unbind("scroll");
-					console.log('done');
-				});
 			});
-
-			*/
-
-
-
+		});
 			
 		// Prevent visible page body in case page is taller than the zoomed set
 		this.setContainer.css('max-height', $(window).height());
@@ -134,7 +137,7 @@ function Mozoom () {
 					"left": ogOffset.left + "px",
 					"top": ogOffset.top + 140 + "px",
 					"width": "25vw"
-			}, 800, function(){
+			}, $zoomMovement, function(){
 				targetSet.css({
 					"position": "relative",
 					"left": "0",
@@ -142,28 +145,28 @@ function Mozoom () {
 				});
 
 				// Hide navigation headers
-				targetSet.children('.set-head').fadeIn(400);
+				targetSet.children('.set-head').fadeIn($faderMovement);
 
 				// Fade in div: #faderOverlay with callback-function
-				$('#faderOverlay').fadeOut(400, function(){
+				$('#faderOverlay').fadeOut($faderMovement, function(){
 					targetSet.css({"z-index": "0"});
 				});
 			})
 			.find('.landscape')
 				.animate({ 
 					"width": "14vw",
-					"margin-bottom": "120px"
-				}, 800)
+					"margin-bottom": $unZoomedImgMargin
+				}, $zoomMovement)
 				.end()
 			.find('.portrait')
 				.animate({ 
 					"height": "25vh",
-					"margin-bottom": "120px"
-				}, 800);
+					"margin-bottom": $unZoomedImgMargin
+				}, $zoomMovement);
 
 			$('html, body').animate({
 				scrollTop: ogScrollTop
-			}, 800);
+			}, $zoomMovement);
 
 		// reset page body height
 		this.setContainer.css('max-height', 'none');
