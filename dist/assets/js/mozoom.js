@@ -85,18 +85,18 @@ function Mozoom () {
 
 			// Substract half of targetImage's height
 			// The middle of targetImage is now equal to the top edge of the window
-			scrollTarget += targetImageHeight / 2;
+//			scrollTarget += targetImageHeight / 2;
 
 			// Add half of the windows height
 			// The targetImage is now in the middle of the window
-			scrollTarget -= $(window).height() / 2;
+//			scrollTarget -= $(window).height() / 2;
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, 800).delay(50).queue(function(){
+			}, 800)/* .delay(50).queue(function(){
 				targetSet.find('.project-head').fadeIn();
 				$(window).unbind("scroll");
-			});
+			}) */;
 		});	
 
 
