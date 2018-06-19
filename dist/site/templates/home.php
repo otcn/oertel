@@ -36,21 +36,16 @@
               <?php
                 // get parent page of selection image
                 $filename = explode('/',$imageURL);
-                $str = array_pop($filename);
-                $parent = $portfolioImages->find($str)->page();
-
-                $orientation = $portfolioImages->find($str)->orientation();
-                $projectTitle = $parent->title();
-                $projectCopy = $parent->copy()->kirbytext();
+                $image = $portfolioImages->find(array_pop($filename))
               ?>
 
               <div class="project">
                 <div class="project-head">
-                  <?= $projectTitle->kirbytext() ?>
-                  <?= $projectCopy->kirbytext()?>
+                  <?= $image->page()->title()->kirbytext() ?>
+                  <?= $image->page()->projectCopy()->kirbytext() ?>
                 </div>
 
-                <?php snippet('image', array('url' => $imageURL, 'orientation' => $orientation, 'project' => $parent, 'set' => 'selection', 'hoverTitle' => $projectTitle)); ?>
+                <?php snippet('image', array('url' => $imageURL, 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'selection', 'hoverTitle' => 'test')) ?>
               </div>
             <?php endforeach ?>
 

@@ -6,6 +6,6 @@
 
   <?php foreach($project->files()->sortBy('sort', 'asc') as $image): ?>
   	<?= $project->page() ?>
-    <?php snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title()->html())); ?>
+    <?php snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title()->html())); ?>
   <?php endforeach ?>
 </div>

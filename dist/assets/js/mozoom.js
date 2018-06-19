@@ -8,15 +8,11 @@ function Mozoom () {
 		$(this).find('img').each(function(){
 			$(this).data({
 				'ogOuterHeight': $(this).outerHeight(true),
-				'ratio': $(this).height()/$(this).width()
 			});
 		})
 	})
 
 }
-
-
-
 
 
 	/*
@@ -65,11 +61,11 @@ function Mozoom () {
 			var scrollTarget = 0;				
 
 			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function(){
+				
 				if ($(this).hasClass('portrait')) {
-					factor = ($(window).height()*.9) + 300;
+					factor = ($(window).height() *.9) + 300;
 				} else {
-					factor = $(window).width()* .5 * 0.666 + 300;
-					/* $(this).data('ratio') */
+					factor = ($(window).width() * .5 * $(this).data('ratio')) + 300;
 				}
 
 				scrollTarget += Math.ceil(factor);
@@ -85,22 +81,19 @@ function Mozoom () {
 
 			// Substract half of targetImage's height
 			// The middle of targetImage is now equal to the top edge of the window
-//			scrollTarget += targetImageHeight / 2;
+			scrollTarget += targetImageHeight / 2;
 
 			// Add half of the windows height
 			// The targetImage is now in the middle of the window
-//			scrollTarget -= $(window).height() / 2;
+			scrollTarget -= $(window).height() / 2;
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, 800)/* .delay(50).queue(function(){
+			}, 800)/*.delay(50).queue(function(){
 				targetSet.find('.project-head').fadeIn();
 				$(window).unbind("scroll");
 			}) */;
 		});	
-
-
-
 
 			/*
 
@@ -179,10 +172,7 @@ function Mozoom () {
 		targetSet.removeClass('setZoomed');
 	};
 	
-
-
-
-
+	
 	/*
 		TOGGLE ZOOM
 	*/

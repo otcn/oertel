@@ -189,9 +189,11 @@ a {
 
 		.portrait {
 			height: 25vh;
+			width: auto;
 		}
 
 		.landscape {
+			height: auto;
 			width: 14vw;
 		}
 	}
