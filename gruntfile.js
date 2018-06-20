@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 		uglify: {
 		  my_target: {
 		    files: {
-		      'dist/assets/js/o.min.js': ['src/o.js']
+			    'dist/assets/js/o.min.js': ['src/mozoom.js','src/o.js']
 		    }
 		  }
 		},
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 		    },
 		  },
 		  js: {
-		    files: 'src/o.js',
+		    files: 'src/*.js',
 		    tasks: ['uglify'],
 		    options: {
 		      livereload: true,
