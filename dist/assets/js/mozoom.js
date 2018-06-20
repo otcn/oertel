@@ -41,6 +41,7 @@ function Mozoom () {
 	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
 		
 		ogScrollTop = $(window).scrollTop();
+		console.log(ogScrollTop);
 
 		// Make sure the div: #faderOverlay will not cover the target Set
 		targetSet.css({ "z-index": "20" });
@@ -74,10 +75,10 @@ function Mozoom () {
 					"height": "90vh",
 					"margin-bottom": $zoomedImgMargin
 				}, $zoomMovement)
-					.end()
-				.find('.project .project-head').animate({
-					'margin-bottom': '300px'
-				});
+				.end()
+			.find('.project .project-head').animate({
+				'margin-bottom': '300px'
+				}, $zoomMovement);
 
 			// Calculate height of all images (including margins) before TargetImage
 			// The top edge of targetImage is now equal to the top edge of the window
@@ -114,10 +115,10 @@ function Mozoom () {
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, $zoomMovement).delay(800).queue(function(){
-				targetSet.find('.project-head').animate({
-					'opacity': 1
-				})
+			}, $zoomMovement)
+			.delay($faderMovement)
+			.queue(function(){
+				targetSet.find('.project .project-head').animate({"opacity": "1"});
 			});
 		});
 			
@@ -138,13 +139,15 @@ function Mozoom () {
 	Mozoom.prototype.zoomOut = function(targetSet, targetImage) {
 
 		// Fade out project head when not zoomed
-		$('.project-head').fadeOut();
+		$('.project .project-head').css({
+			"opacity": "0"
+		});
 
 		targetSet
 			.animate({
-					"left": ogOffset.left + "px",
-					"top": ogOffset.top + 140 + "px",
-					"width": "25vw"
+				"left": ogOffset.left + "px",
+				"top": ogOffset.top + 140 + "px",
+				"width": "25vw"
 			}, $zoomMovement, function(){
 				targetSet.css({
 					"position": "relative",
@@ -160,6 +163,11 @@ function Mozoom () {
 					targetSet.css({"z-index": "0"});
 				});
 			})
+			/* .find('.project .project-head')
+				.animate({
+					"margin-bottom": "0"
+				}, $zoomMovement)
+				.end() */
 			.find('.landscape')
 				.animate({ 
 					"width": "14vw",
@@ -171,17 +179,19 @@ function Mozoom () {
 					"height": "25vh",
 					"margin-bottom": $unZoomedImgMargin
 				}, $zoomMovement);
+				
 
 			$('html, body').animate({
 				scrollTop: ogScrollTop
 			}, $zoomMovement);
+			console.log(ogScrollTop);
 
 		// reset page body height
 		this.setContainer.css('max-height', 'none');
 
 		// Remove class to describe current state of set
 		targetSet.removeClass('setZoomed');
-	};
+	}
 	
 	
 	/*
