@@ -60,7 +60,7 @@ $(document).ready(function(){
 	})
 	
 	// zoom images on click
-	portfolioImages.click(function(){
+	portfolioImages.click(function(e){
 		var targetSet = '#'+$(this).data('set');
 		mo.zoomToggle($(targetSet), $(this));
 	});

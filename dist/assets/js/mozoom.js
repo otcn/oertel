@@ -1,7 +1,12 @@
 
 function Mozoom () {
-	this.setSizeClass = 's'										//
-	this.setContainer = $('#content');				// define wrapper container
+	this.setSizeClass 			= 's'										//
+	this.setContainer 			= $('#content');				// define wrapper container
+
+	$zoomedImgMargin 		= 300;	// Define bottom margin for zoomded images
+	$unZoomedImgMargin 	= 120;	// Define bottom margin for unzoomded images			
+	$faderMovement 			= 400; 	// Define value for slow fade
+	$zoomMovement 			= 200;		// Define value for slow fade
 
 	// store original image height including margin
 	$('.set').each(function(){
@@ -18,21 +23,6 @@ function Mozoom () {
 		SET VARIABLES
 	*/
 
-		$(document).ready(function(){
-			// Define bottom margin for zoomded images
-			$zoomedImgMargin = 300;
-
-			// Define bottom margin for unzoomded images
-			$unZoomedImgMargin = 120;
-
-			// Define value for slow fade
-			$faderMovement = 400;
-
-			// Define value for slow fade
-			$zoomMovement = 400;
-		});
-
-
 
 	/*
 		ZOOM IN
@@ -41,7 +31,6 @@ function Mozoom () {
 	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
 		
 		ogScrollTop = $(window).scrollTop();
-		console.log(ogScrollTop);
 
 		// Make sure the div: #faderOverlay will not cover the target Set
 		targetSet.css({ "z-index": "20" });
@@ -63,22 +52,22 @@ function Mozoom () {
 					"left": "0",
 					"top": "0",
 					"width": "100vw"
-			}, $zoomMovement)
+			}, { duration: $zoomMovement, queue: false})
 			.find('.landscape')
 				.animate({ 
 					"width": "50vw",
 					"margin-bottom": $zoomedImgMargin
-				}, $zoomMovement)
+				}, { duration: $zoomMovement, queue: false})
 				.end()
 			.find('.portrait')
 				.animate({ 
 					"height": "90vh",
 					"margin-bottom": $zoomedImgMargin
-				}, $zoomMovement)
-				.end()
-			.find('.project .project-head').animate({
-				'margin-bottom': '300px'
-				}, $zoomMovement);
+				}, { duration: $zoomMovement, queue: false})
+					.end()
+				.find('.project .project-head').animate({
+					'margin-bottom': '300px'
+				}, { duration: $zoomMovement, queue: false});
 
 			// Calculate height of all images (including margins) before TargetImage
 			// The top edge of targetImage is now equal to the top edge of the window
@@ -115,10 +104,10 @@ function Mozoom () {
 					
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, $zoomMovement)
-			.delay($faderMovement)
-			.queue(function(){
-				targetSet.find('.project .project-head').animate({"opacity": "1"});
+			}, { duration: $zoomMovement, queue: false}, function(){
+				targetSet.find('.project-head').animate({
+					'opacity': 1
+				})
 			});
 		});
 			
@@ -139,15 +128,32 @@ function Mozoom () {
 	Mozoom.prototype.zoomOut = function(targetSet, targetImage) {
 
 		// Fade out project head when not zoomed
-		$('.project .project-head').css({
-			"opacity": "0"
-		});
+		//$('.project-head').animate({'opacity': 0});
+		$('.project-head').hide();
+		
+		
+			// Calculate height of all images (including margins) before TargetImage
+			// The top edge of targetImage is now equal to the top edge of the window
+			var scrollTarget = 0;				
 
+			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {					
+				
+				if ($(this).hasClass('portrait')) {
+					factor = $(window).height()*0.25 + $unZoomedImgMargin;
+				} else if ($(this).hasClass('landscape')) {
+					factor = ($(window).width() * .14 * $(this).data('ratio')) + $unZoomedImgMargin;
+				}
+				
+				scrollTarget += factor;
+			});
+			
 		targetSet
 			.animate({
-				"left": ogOffset.left + "px",
-				"top": ogOffset.top + 140 + "px",
-				"width": "25vw"
+				
+					"left": ogOffset.left + "px",
+					"top": ogOffset.top + 140 + "px",
+					"width": "25vw"
+			
 			}, $zoomMovement, function(){
 				targetSet.css({
 					"position": "relative",
@@ -155,43 +161,45 @@ function Mozoom () {
 					"top": "0"
 				});
 
-				// Hide navigation headers
+				// Show  navigation headers
 				targetSet.children('.set-head').fadeIn($faderMovement);
 
-				// Fade in div: #faderOverlay with callback-function
+				// Fade out #faderOverlay
 				$('#faderOverlay').fadeOut($faderMovement, function(){
 					targetSet.css({"z-index": "0"});
 				});
 			})
-			/* .find('.project .project-head')
-				.animate({
-					"margin-bottom": "0"
-				}, $zoomMovement)
-				.end() */
+			
+			.find('.project .project-head').animate({
+					'margin-bottom': 0
+			}, {duration: $zoomMovement, queue: false})
+			.end()
+			
 			.find('.landscape')
 				.animate({ 
 					"width": "14vw",
 					"margin-bottom": $unZoomedImgMargin
-				}, $zoomMovement)
-				.end()
+				}, {duration: $zoomMovement, queue: false})
+			.end()
+				
 			.find('.portrait')
 				.animate({ 
 					"height": "25vh",
 					"margin-bottom": $unZoomedImgMargin
-				}, $zoomMovement);
-				
+				}, {duration: $zoomMovement, queue: false});
+
 
 			$('html, body').animate({
-				scrollTop: ogScrollTop
-			}, $zoomMovement);
-			console.log(ogScrollTop);
+				scrollTop: scrollTarget
+			}, {duration: $zoomMovement, queue: false});
+			
 
 		// reset page body height
 		this.setContainer.css('max-height', 'none');
 
 		// Remove class to describe current state of set
 		targetSet.removeClass('setZoomed');
-	}
+	};
 	
 	
 	/*
