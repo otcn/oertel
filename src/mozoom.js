@@ -159,6 +159,30 @@ function Mozoom () {
 			
 			scrollTarget += factor;
 		});
+		
+
+		targetSet
+		.queue('putSetBack', function(){
+			$(this).animate({
+				"left": ogOffset.left + "px",
+				"top": ogOffset.top + 140 + "px",
+				"width": "25vw"
+			}, $zoomMovement)
+			.promise().done(function(){
+				$(this).css({
+				"position": "relative",
+				"left": "0",
+				"top": "0"
+			});
+
+			// Show navigation headers
+			$(this).children('.set-head').fadeIn($faderMovement);
+
+			// Fade out #faderOverlay
+			$('#faderOverlay').fadeOut($faderMovement, function(){
+				targetSet.css({"z-index": "0"});
+			});
+		})
 
 		// Preparing queues		
 		targetSet
@@ -186,48 +210,16 @@ function Mozoom () {
 			$('html, body').animate({
 				scrollTop: scrollTarget
 			}, { duration: $zoomMovement });
+			console.log('last step of zoomOut');
+			targetSet.dequeue('putSetBack');
 		});
-
-		targetSet
-		.queue('resetOffset', function(){
-			$(this).css({
-				"position": "relative",
-				"left": "0",
-				"top": "0"
-			});
-
-			// Show  navigation headers
-			$(this).children('.set-head').fadeIn($faderMovement);
-
-			// Fade out #faderOverlay
-			$('#faderOverlay').fadeOut($faderMovement, function(){
-				targetSet.css({"z-index": "0"});
-			});
-		});
-
-		// Fireing queues
-		targetSet
-		.queue('setOffset', function(){
-			$(this).animate({
-				"left": ogOffset.left + "px",
-				"top": ogOffset.top + 140 + "px",
-				"width": "25vw"
-			}, $zoomMovement);
-			targetSet.dequeue('resetOffset');
-		});
-
+		
 		// Prepare hiding headers and run queues
-		targetSet
-		.queue('hideHeaders', function(){
-			targetSet.find('.project-head').animate({
-				'opacity': 0
-			});
-			targetSet.dequeue('setOffset');
+		targetSet.find('.project-head').animate({
+			'opacity': 0
+		}).promise().done(function(){
 			targetSet.dequeue('zoomOut');
-		})
-		.dequeue('hideHeaders');
-
-
+		});
 		
 			
 			
