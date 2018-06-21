@@ -1,12 +1,12 @@
 
 function Mozoom () {
-	this.setSizeClass 			= 's'										//
-	this.setContainer 			= $('#content');				// define wrapper container
+	this.setSizeClass		= 's'
+	this.setContainer		= $('#content');	// define wrapper container
 
-	$zoomedImgMargin 		= 300;	// Define bottom margin for zoomded images
-	$unZoomedImgMargin 	= 120;	// Define bottom margin for unzoomded images			
-	$faderMovement 			= 400; 	// Define value for slow fade
-	$zoomMovement 			= 200;		// Define value for slow fade
+	$zoomedImgMargin		= 300;				// Define bottom margin for zoomded images
+	$unZoomedImgMargin		= 120;				// Define bottom margin for unzoomded images			
+	$faderMovement			= 400;				// Define value for slow fade
+	$zoomMovement			= 400;				// Define value for slow fade
 
 	// store original image height including margin
 	$('.set').each(function(){
@@ -75,15 +75,15 @@ function Mozoom () {
 
 			// prepare showing headers
 			targetSet
-			.queue('headers', function(){
+			.queue('showHeaders', function(){
 				targetSet.find('.project-head').delay($faderMovement).animate({
-						'opacity': 1
+					'opacity': 1
 				});
 			});
 			
 			// prepare zooming set and run queues
 			targetSet
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$(this).css({
 					'left': ogOffset.left + 'px',
 					'top': ogOffset.top + 140 + 'px' ,
@@ -91,7 +91,7 @@ function Mozoom () {
 				});
 				next();
 			})
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$(this).animate({
 					"left": "0",
 					"top": "0",
@@ -99,14 +99,14 @@ function Mozoom () {
 				}, { duration: $zoomMovement });
 				next();			
 			})
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$(this).find('.landscape').animate({ 
 					"width": "50vw",
 					"margin-bottom": $zoomedImgMargin
 				}, { duration: $zoomMovement });
 				next();			
 			})
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$(this).find('.portrait')
 				.animate({ 
 					"height": "90vh",
@@ -114,21 +114,19 @@ function Mozoom () {
 				}, { duration: $zoomMovement });
 				next();			
 			})
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$(this).find('.project .project-head').animate({
 					'margin-bottom': '300px'
 				}, { duration: $zoomMovement });
 				next();
 			})
-			.queue('zoom', function(next){
+			.queue('zoomIn', function(next){
 				$('html, body').animate({
 					scrollTop: scrollTarget
 				}, { duration: $zoomMovement });
-				targetSet.dequeue('headers');
+				targetSet.dequeue('showHeaders');
 			})
-			.dequeue('zoom');
-		
-
+			.dequeue('zoomIn');
 		});
 			
 		// Prevent visible page body in case page is taller than the zoomed set
@@ -144,33 +142,101 @@ function Mozoom () {
 	*/
 
 	Mozoom.prototype.zoomOut = function(targetSet, targetImage) {
+		
 		targetSet.stop('zoom', true, true);
 		targetSet.stop('headers', true, true);
 
-		// Fade out project head when not zoomed
-		$('.project-head').animate({'opacity': 0});
-		
-			// Calculate height of all images (including margins) before TargetImage
-			// The top edge of targetImage is now equal to the top edge of the window
-			var scrollTarget = 0;				
+		// Calculate height of all images (including margins) before TargetImage
+		var scrollTarget = 0;				
 
-			targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {					
-				
-				if ($(this).hasClass('portrait')) {
-					factor = $(window).height()*0.25 + $unZoomedImgMargin;
-				} else if ($(this).hasClass('landscape')) {
-					factor = ($(window).width() * .14 * $(this).data('ratio')) + $unZoomedImgMargin;
-				}
-				
-				scrollTarget += factor;
-			});
+		targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {					
 			
+			if ($(this).hasClass('portrait')) {
+				factor = $(window).height()*0.25 + $unZoomedImgMargin;
+			} else if ($(this).hasClass('landscape')) {
+				factor = ($(window).width() * .14 * $(this).data('ratio')) + $unZoomedImgMargin;
+			}
+			
+			scrollTarget += factor;
+		});
+
+		// Preparing queues		
 		targetSet
+		.queue('zoomOut', function(next){
+			$(this).find('.project .project-head').animate({
+				'margin-bottom': 0
+			}, { duration: $zoomMovement });
+			next();
+		})
+		.queue('zoomOut', function(next){
+			$(this).find('.landscape').animate({ 
+				"width": "14vw",
+				"margin-bottom": $unZoomedImgMargin
+			}, { duration: $zoomMovement });
+			next();
+		})
+		.queue('zoomOut', function(next){
+			$(this).find('.portrait').animate({ 
+				"height": "25vh",
+				"margin-bottom": $unZoomedImgMargin
+			}, { duration: $zoomMovement });
+			next();
+		})
+		.queue('zoomOut', function(){
+			$('html, body').animate({
+				scrollTop: scrollTarget
+			}, { duration: $zoomMovement });
+		});
+
+		targetSet
+		.queue('resetOffset', function(){
+			$(this).css({
+				"position": "relative",
+				"left": "0",
+				"top": "0"
+			});
+
+			// Show  navigation headers
+			$(this).children('.set-head').fadeIn($faderMovement);
+
+			// Fade out #faderOverlay
+			$('#faderOverlay').fadeOut($faderMovement, function(){
+				targetSet.css({"z-index": "0"});
+			});
+		});
+
+		// Fireing queues
+		targetSet
+		.queue('setOffset', function(){
+			$(this).animate({
+				"left": ogOffset.left + "px",
+				"top": ogOffset.top + 140 + "px",
+				"width": "25vw"
+			}, $zoomMovement);
+			targetSet.dequeue('resetOffset');
+		});
+
+		// Prepare hiding headers and run queues
+		targetSet
+		.queue('hideHeaders', function(){
+			targetSet.find('.project-head').animate({
+				'opacity': 0
+			});
+			targetSet.dequeue('setOffset');
+			targetSet.dequeue('zoomOut');
+		})
+		.dequeue('hideHeaders');
+
+
+		
+			
+			
+		/* targetSet
 			.animate({
 				
-					"left": ogOffset.left + "px",
-					"top": ogOffset.top + 140 + "px",
-					"width": "25vw"
+				"left": ogOffset.left + "px",
+				"top": ogOffset.top + 140 + "px",
+				"width": "25vw"
 			
 			}, $zoomMovement, function(){
 				targetSet.css({
@@ -209,7 +275,7 @@ function Mozoom () {
 
 			$('html, body').animate({
 				scrollTop: scrollTarget
-			}, {duration: $zoomMovement, queue: false});
+			}, {duration: $zoomMovement, queue: false}); */
 			
 
 		// reset page body height
