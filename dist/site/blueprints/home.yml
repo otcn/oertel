@@ -4,6 +4,8 @@ files: false
 pages: false
 hide: false
 
+icon: home
+
 fields:
   title:
     label: Title
