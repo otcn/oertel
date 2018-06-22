@@ -39,20 +39,19 @@
 
     <div class="row one">
       <div class="about l">
-        <?= $page->about()->kirbytext() ?>
+        <?= $site->about()->kirbytext() ?>
       </div>
     </div>
 
     <div class="row one">
       <div class="clients l">
         <h2>Clients</h2>
-        <?= $page->clients()->kirbytext() ?>
+        <?= $site->clients()->kirbytext() ?>
       </div>
     </div>
   </header>
 
   <div id="faderOverlay"></div>
-
 
 
   <!-- Mobile header -->

@@ -15,10 +15,12 @@ fields:
   email:
     label: Email
     type: email
+    width: 1/2
 
   phone:
     label: Phone
     type: tel
+    width: 1/2
 
   about:
     label: About
@@ -27,3 +29,8 @@ fields:
   clients:
     label: Clients
     type:  textarea
+
+	socialImage:
+		label: Social image
+		type: image
+		help: Preview image shown in social media when the site URL is posted

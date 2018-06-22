@@ -1,5 +1,5 @@
 <?php
-
+	
 class imageselection {
     static function imagelist($field) {
         $kirby = kirby();

@@ -21,7 +21,7 @@
         </div>
 
         <?php
-          if ($set->uid() != 'selection') {
+          if ($set->uid() != 'featured') {
 
             // For normal sets
             foreach ($set->children() as $project) {
@@ -30,11 +30,11 @@
 
           } else {
 						
-						// for the selection
+						// for the featured set
             foreach ($set->selectedImages()->toStructure() as $imageURL): ?>
               
               <?php
-                // get parent page of selection image
+                // get parent page of featured image
                 $filename = explode('/',$imageURL);
                 $image = $portfolioImages->find(array_pop($filename))
               ?>
@@ -43,10 +43,10 @@
                 <div class="project-head">
                   <hr>
                   <h5> <?= $image->page()->title() ?> </h5>
-                  <?= $image->page()->projectCopy()->kirbytext() ?>
+                  <?= $image->page()->copy()->kirbytext() ?>
                 </div>
 
-                <?php snippet('image', array('url' => $imageURL, 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'selection', 'hoverTitle' => 'test')) ?>
+                <?php snippet('image', array('url' => $imageURL, 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $image->page()->title())) ?>
               </div>
             <?php endforeach ?>
 
