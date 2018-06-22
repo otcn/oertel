@@ -1,23 +1,33 @@
 <!doctype html>
-<html lang="<?= site()->language() ? site()->language()->code() : 'de' ?>">
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex">
 
-  <title><?= $site->title()->html() ?> | <?= $page->title()->html() ?></title>
+  <title><?= $site->title()->html() ?> — <?= $page->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
 
   <?= css('assets/css/o.css') ?>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+  <?= js('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js') ?>
+  <?= js('https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js') ?>
+
   <?= js('assets/js/o.min.js') ?>
 
   <!-- Mobile -->
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  
+  <!-- Icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
+
+  <meta property="og:title" content="<?= $site->title()->html() ?>">
+  <meta property="og:site_name" content="Matthias Oertel Photography">
+  <meta property="og:url" content="<?= $site->url() ?>">
+  <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
+  <meta property="og:image" content="<?= $site->socialImage()->url() ?>">
 </head>
 
 <body>

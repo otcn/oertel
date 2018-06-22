@@ -25,12 +25,23 @@ fields:
   about:
     label: About
     type:  textarea
+    buttons:
+      - link
     
   clients:
     label: Clients
     type:  textarea
+    buttons:
+      - link
+
 
 	socialImage:
 		label: Social image
 		type: image
 		help: Preview image shown in social media when the site URL is posted
+	
+	description:
+		label: SEO description
+		type: textarea
+		buttons: false
+		help: Short description for search engines
