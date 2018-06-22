@@ -36,8 +36,11 @@
               <?php
                 // get parent page of featured image
                 $filename = explode('/',$imageURL);
-                $image = $portfolioImages->find(array_pop($filename))
+                $image = $portfolioImages->find(array_pop($filename));
+                if ($image !== null):
               ?>
+              
+              
 
               <div class="project">
                 <div class="project-head">
@@ -48,7 +51,7 @@
 
                 <?php snippet('image', array('url' => $imageURL, 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $image->page()->title())) ?>
               </div>
-            <?php endforeach ?>
+            <?php endif; endforeach ?>
 
             <?php
           }
