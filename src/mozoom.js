@@ -4,9 +4,9 @@ function Mozoom () {
 	this.setContainer		= $('#content');	// define wrapper container
 
 	$zoomedImgMargin		= 300;				// Define bottom margin for zoomded images
-	$unZoomedImgMargin		= 120;				// Define bottom margin for unzoomded images			
-	$faderMovement			= 400;				// Define value for slow fade
-	$zoomMovement			= 400;				// Define value for slow fade
+	$unZoomedImgMargin	= 120;				// Define bottom margin for unzoomded images			
+	$faderMovement			= 400;				// Define speed for fades
+	$zoomMovement				= 80;				// Define speed for zooms
 
 	// store original image height including margin
 	$('.set').each(function(){
@@ -162,7 +162,8 @@ function Mozoom () {
 		
 
 		targetSet
-		.queue('putSetBack', function(){
+		.queue('putSetBack', function() {
+			
 			$(this).animate({
 				"left": ogOffset.left + "px",
 				"top": ogOffset.top + 140 + "px",
@@ -170,9 +171,10 @@ function Mozoom () {
 			}, $zoomMovement)
 			.promise().done(function(){
 				$(this).css({
-				"position": "relative",
-				"left": "0",
-				"top": "0"
+					"position": "relative",
+					"left": "0",
+					"top": "0"
+				});
 			});
 
 			// Show navigation headers
@@ -182,7 +184,8 @@ function Mozoom () {
 			$('#faderOverlay').fadeOut($faderMovement, function(){
 				targetSet.css({"z-index": "0"});
 			});
-		})
+			
+		});
 
 		// Preparing queues		
 		targetSet
@@ -220,55 +223,7 @@ function Mozoom () {
 		}).promise().done(function(){
 			targetSet.dequeue('zoomOut');
 		});
-		
-			
-			
-		/* targetSet
-			.animate({
-				
-				"left": ogOffset.left + "px",
-				"top": ogOffset.top + 140 + "px",
-				"width": "25vw"
-			
-			}, $zoomMovement, function(){
-				targetSet.css({
-					"position": "relative",
-					"left": "0",
-					"top": "0"
-				});
 
-				// Show  navigation headers
-				targetSet.children('.set-head').fadeIn($faderMovement);
-
-				// Fade out #faderOverlay
-				$('#faderOverlay').fadeOut($faderMovement, function(){
-					targetSet.css({"z-index": "0"});
-				});
-			})
-			
-			.find('.project .project-head').animate({
-					'margin-bottom': 0
-			}, {duration: $zoomMovement, queue: false})
-			.end()
-			
-			.find('.landscape')
-				.animate({ 
-					"width": "14vw",
-					"margin-bottom": $unZoomedImgMargin
-				}, {duration: $zoomMovement, queue: false})
-			.end()
-				
-			.find('.portrait')
-				.animate({ 
-					"height": "25vh",
-					"margin-bottom": $unZoomedImgMargin
-				}, {duration: $zoomMovement, queue: false});
-
-
-			$('html, body').animate({
-				scrollTop: scrollTarget
-			}, {duration: $zoomMovement, queue: false}); */
-			
 
 		// reset page body height
 		this.setContainer.css('max-height', 'none');

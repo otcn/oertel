@@ -6,12 +6,11 @@ $(document).ready(function(){
 	var mo = new Mozoom();
 	var portfolioImages = $('.set figure');
 	
-	var slickOptions = 
-		{
+	var slickOptions = {
 			infinite: true,
 			adaptiveHeight: true,
 			arrows: false
-		}
+	}
 		
 	// debouncer
 	function debounce(func, wait, immediate) {
