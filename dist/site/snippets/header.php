@@ -7,19 +7,19 @@
 
   <title><?= $site->title()->html() ?> — <?= $page->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
-
-  <?= css('assets/css/o.css') ?>
+  
   <?= css('assets/css/Theinhardt-Regular.css') ?>
+  <?= css('assets/css/o.css') ?>
 
   <?= js('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js') ?>
   <?= js('https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js') ?>
-
+  
+  <!-- Mobile -->
+  <?= css('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css') ?>
+  <?= js('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js') ?>
+  
   <?= js('assets/js/o.min.js') ?>
 
-  <!-- Mobile -->
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  
   <!-- Icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/regular.css" integrity="sha384-avJt9MoJH2rB4PKRsJRHZv7yiFZn8LrnXuzvmZoD3fh1aL6aM6s0BBcnCvBe6XSD" crossorigin="anonymous">

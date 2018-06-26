@@ -31,20 +31,21 @@ $(document).ready(function(){
 	// inits slick slider if screen is small as indicated by presence of mobile header || breakpoint
 	var conditionallySlick = debounce(function() {
 		if ($('#mobile-page-header').is(':visible')) {
-			$('.page-body').slick(slickOptions);
+			console.log('mobile header is visible');
+			//$('.page-body').slick(slickOptions);
 
 			// navigate slick slider
 			$('.set-head i').show();
 
 			$('.fa-caret-left').click(function(){
-				$('.page-body').slick('slickPrev');
+				//$('.page-body').slick('slickPrev');
 			})
 			
 			$('.fa-caret-right').click(function(){
-				$('.page-body').slick('slickNext');
+				//$('.page-body').slick('slickNext');
 			})
 		} else {
-			$('.page-body').slick('unslick');
+			//$('.page-body').slick('unslick');
 
 			$('.set-head i').hide();
 		}
@@ -70,11 +71,6 @@ $(document).ready(function(){
 	}).mouseleave(function() {
 		$('.set-head p').text('');
 	});
-
-
-
-
-
 
 	// Function to show and hide information
 	$('.info').hide();
