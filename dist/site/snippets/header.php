@@ -9,6 +9,7 @@
   <meta name="description" content="<?= $site->description()->html() ?>">
 
   <?= css('assets/css/o.css') ?>
+  <?= css('assets/css/Theinhardt-Regular.css') ?>
 
   <?= js('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js') ?>
   <?= js('https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js') ?>
