@@ -33,7 +33,12 @@ $(document).ready(function(){
 
 		if ($('#mobile-page-header').is(':visible')) {
 
+			height = $('.slick-active').height();
+			console.log($('.slick-current').height());
+			console.log($('.slick-active').height());
+
 			$('.page-body').slick(slickOptions);
+			$('.slick-list').css("height", height);
 			$('.page-body').addClass('slicked');
 
 			$('.caret-left').click(function(){
@@ -64,7 +69,7 @@ $(document).ready(function(){
 
 	});
 
-	//conditionallySlick();
+	conditionallySlick();
 
 	// listen for window to become small
 		$(window).resize(function(){
@@ -80,10 +85,10 @@ $(document).ready(function(){
 
 		});
 
-	portfolioImages.click(function(e){
+	/* portfolioImages.click(function(e){
 		var targetSet = '#'+$(this).data('set');
 		mo.zoomToggle($(targetSet), $(this));
-	});
+	}); */
 
 	// Function to show and hide information
 	$('.info').hide();
