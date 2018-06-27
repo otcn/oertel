@@ -49,10 +49,10 @@ $(document).ready(function(){
 
 		} else {
 
-			/* portfolioImages.click(function(e){
+			portfolioImages.click(function(e){
 				var targetSet = '#'+$(this).data('set');
 				mo.zoomToggle($(targetSet), $(this));
-			}); */
+			});
 
 			// Show the title of project on image hover
 			$('img').mouseenter(function() {
@@ -64,21 +64,21 @@ $(document).ready(function(){
 
 	});
 
-	conditionallySlick();
+	//conditionallySlick();
 
 	// listen for window to become small
-	$(window).resize(function(){
-		
-		if($('.page-body').hasClass('slicked')) {
-			if(window.innerWidth >= 800) {
-				$('.page-body').slick('unslick');
-				$('.page-body').removeClass('slicked')
+		$(window).resize(function(){
+			
+			if($('.page-body').hasClass('slicked')) {
+				if(window.innerWidth >= 800) {
+					$('.page-body').slick('unslick');
+					$('.page-body').removeClass('slicked')
+				}
+			} else {
+				conditionallySlick();
 			}
-		} else {
-			conditionallySlick();
-		}
 
-	});
+		});
 
 	portfolioImages.click(function(e){
 		var targetSet = '#'+$(this).data('set');

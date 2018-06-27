@@ -101,7 +101,7 @@ function Mozoom () {
 				next();			
 			})
 			.queue('zoomIn', function(next){
-				$(this).find('.landscape').animate({ 
+				$(this).find('.landscape, .square').animate({ 
 					"width": "50vw",
 					"margin-bottom": $zoomedImgMargin
 				}, { duration: $zoomMovement });
@@ -199,7 +199,7 @@ function Mozoom () {
 			next();
 		})
 		.queue('zoomOut', function(next){
-			$(this).find('.landscape').animate({ 
+			$(this).find('.landscape, .square').animate({ 
 				"width": "14vw",
 				"margin-bottom": $unZoomedImgMargin
 			}, { duration: $zoomMovement });
