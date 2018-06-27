@@ -256,12 +256,6 @@ a {
 		.page-header {
 			display: none;
 		}
-		
-		.page-body {
-			.set .portrait {
-				height: auto;
-			}
-		}
 
 		.infoButton {
 			position: absolute;
@@ -275,13 +269,17 @@ a {
 
 		.page-body {
 			.set {
-				.landscape, .portrait {
+				.landscape, .portrait, .square {
 					display: block;
 					margin: 0 auto 70px auto;
 		
 					cursor: pointer;
 		
 					width: 80%;
+				}
+
+				.portrait, .square {
+					height: auto;
 				}
 			}
 		}
