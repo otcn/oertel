@@ -4,9 +4,9 @@ function Mozoom () {
 	this.setContainer		= $('#content');	// define wrapper container
 
 	$zoomedImgMargin		= 300;				// Define bottom margin for zoomded images
-	$unZoomedImgMargin	= 120;				// Define bottom margin for unzoomded images			
+	$unZoomedImgMargin		= 120;				// Define bottom margin for unzoomded images			
 	$faderMovement			= 400;				// Define speed for fades
-	$zoomMovement				= 80;				// Define speed for zooms
+	$zoomMovement			= 100;				// Define speed for zooms
 
 	// store original image height including margin
 	$('.set').each(function(){
@@ -32,6 +32,7 @@ function Mozoom () {
 
 		// Hide navigation headers		
 		targetSet.children('.set-head').fadeOut($faderMovement);
+		$('footer').hide();
 
 		// Get values for top and left position of target Set …
 		ogOffset = targetSet.offset();
@@ -146,6 +147,8 @@ function Mozoom () {
 		targetSet.stop('zoom', true, true);
 		targetSet.stop('headers', true, true);
 
+		$('footer').show();
+
 		// Calculate height of all images (including margins) before TargetImage
 		var scrollTarget = 0;				
 
@@ -213,7 +216,6 @@ function Mozoom () {
 			$('html, body').animate({
 				scrollTop: scrollTarget
 			}, { duration: $zoomMovement });
-			console.log('last step of zoomOut');
 			targetSet.dequeue('putSetBack');
 		});
 		

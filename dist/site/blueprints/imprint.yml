@@ -1,0 +1,15 @@
+title: Imprint
+
+pages: false
+files: false
+
+icon: file
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  copy:
+    label: Copy
+    type:  textarea

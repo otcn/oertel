@@ -14,10 +14,10 @@
     <?php foreach ($pages->visible() as $set): ?>
       <section class="set s" id="<?= $set->uid() ?>">
         <div class="set-head">
-          <i class="fas fa-caret-left"></i>
+          <p class="caret-left">◀︎</p>
           <h3> <?= $set->title() ?> </h3>
-          <p></p>
-          <i class="fas fa-caret-right"></i>
+          <p class="placeholder"></p>
+          <p class="caret-right">▶︎</p>
         </div>
 
         <?php

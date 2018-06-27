@@ -69,12 +69,13 @@ body {
 	margin-bottom: 5px;
 }
 
-.inactive {
-	-webkit-transition: opacity .8s ease-in-out;
-	-moz-transition: opacity .8s ease-in-out;
-	-ms-transition: opacity .8s ease-in-out;
-	-o-transition: opacity .8s ease-in-out;
-	opacity: 0;
+
+
+
+
+// footer
+footer {
+	margin: 0 0 15px 30px;
 }
 
 
@@ -211,6 +212,10 @@ a {
 	display: none;
 }
 
+.caret-left, .caret-right {
+	display: none;
+}
+
 
 
 
@@ -258,9 +263,9 @@ a {
 			}
 		}
 
-		.fa-info-circle {
+		.infoButton {
 			position: absolute;
-			top: 14px;
+			top: 12px;
 			right: 25px;
 		}
 
@@ -298,12 +303,17 @@ a {
 			//position: sticky;
 			top: 0px;
 
-			.fa-caret-left {
-				margin-left: 30px;
+			
+			.caret-left, .caret-right {
+				display: block;
+				flex-grow: 1;
+				font-size: .7em;
+
+				cursor: pointer;
 			}
-	
-			.fa-caret-left, .fa-caret-right {
-				flex-grow: 1
+			
+			.caret-left {
+				margin-left: 30px;
 			}
 
 			h3 {
@@ -311,5 +321,4 @@ a {
 				flex-grow: 5;
 			}
 		}
-
 }

@@ -7,9 +7,9 @@ $(document).ready(function(){
 	var portfolioImages = $('.set figure');
 	
 	var slickOptions = {
-			infinite: true,
-			adaptiveHeight: true,
-			arrows: false
+		infinite: true,
+		adaptiveHeight: true,
+		arrows: false
 	}
 		
 	// debouncer
@@ -30,52 +30,65 @@ $(document).ready(function(){
 	
 	// inits slick slider if screen is small as indicated by presence of mobile header || breakpoint
 	var conditionallySlick = debounce(function() {
+
 		if ($('#mobile-page-header').is(':visible')) {
-			console.log('mobile header is visible');
-			//$('.page-body').slick(slickOptions);
 
-			// navigate slick slider
-			$('.set-head i').show();
+			$('.page-body').slick(slickOptions);
+			$('.page-body').addClass('slicked');
 
-			$('.fa-caret-left').click(function(){
-				//$('.page-body').slick('slickPrev');
+			$('.caret-left').click(function(){
+				$('.page-body').slick('slickPrev');
 			})
 			
-			$('.fa-caret-right').click(function(){
-				//$('.page-body').slick('slickNext');
+			$('.caret-right').click(function(){
+				$('.page-body').slick('slickNext');
 			})
+
+			portfolioImages.unbind('click');
+			$('img').unbind('mouseenter');
+
 		} else {
-			//$('.page-body').slick('unslick');
 
-			$('.set-head i').hide();
+			/* portfolioImages.click(function(e){
+				var targetSet = '#'+$(this).data('set');
+				mo.zoomToggle($(targetSet), $(this));
+			}); */
+
+			// Show the title of project on image hover
+			$('img').mouseenter(function() {
+				$(this).parents('.project').siblings('.set-head').children('.placeholder').text($(this).data('title'));
+			}).mouseleave(function() {
+				$('.set-head .placeholder').text('');
+			});
 		}
-			
-	}, 250);
-	
+
+	});
+
 	conditionallySlick();
 
 	// listen for window to become small
 	$(window).resize(function(){
-		conditionallySlick();
-	})
-	
-	// zoom images on click
+		
+		if($('.page-body').hasClass('slicked')) {
+			if(window.innerWidth >= 800) {
+				$('.page-body').slick('unslick');
+				$('.page-body').removeClass('slicked')
+			}
+		} else {
+			conditionallySlick();
+		}
+
+	});
+
 	portfolioImages.click(function(e){
 		var targetSet = '#'+$(this).data('set');
 		mo.zoomToggle($(targetSet), $(this));
 	});
 
-	// Show the title of project on image hover
-	$('img').mouseenter(function() {
-		$(this).parents('.project').siblings('.set-head').children('p').text($(this).data('title'));
-	}).mouseleave(function() {
-		$('.set-head p').text('');
-	});
-
 	// Function to show and hide information
 	$('.info').hide();
 
-	$('.fa-info-circle').click(function() {
+	$('.infoButton').click(function() {
 		$('.info').toggle();
 	});
 	

@@ -33,55 +33,12 @@
       <div class="author s">
         <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
       </div>
-      <div class="mail s">
-        <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
-      </div>
-      <div class="phone s">
-        <h4> <?= $site->phone()->html() ?> </h4>
-      </div>
-      <div class="spacer s">
-        <p></p>
-      </div>
-    </div>
-
-    <div class="row one">
-      <div class="about l">
-        <?= $site->about()->kirbytext() ?>
-      </div>
-    </div>
-
-    <div class="row one">
-      <div class="clients l">
-        <h2>Clients</h2>
-        <?= $site->clients()->kirbytext() ?>
-      </div>
-    </div>
   </header>
-
-  <div id="faderOverlay"></div>
-
 
   <!-- Mobile header -->
   <header id="mobile-page-header" class="mobile-page-header">
     <div class="author">
       <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
-    </div>
-
-    <!--  <i class="far fa-info-circle"></i> -->
-    <p class="infoButton">ℹ︎</p>
-
-    <div class="info">
-      <div class="about l">
-        <?= $page->about()->kirbytext() ?>
-      </div>
-
-      <div class="clients l">
-        <h2>Clients</h2>
-        <?= $page->clients()->kirbytext() ?>
-      </div>
-
-      <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
-      <h4> <?= $site->phone()->html() ?> </h4>
     </div>
   </header>
 </body>
