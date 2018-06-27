@@ -48,6 +48,8 @@ function Mozoom () {
 				factor = ($(window).height() *.9) + $zoomedImgMargin;
 			} else if ($(this).hasClass('landscape')) {
 				factor = ($(window).width() * .5 * $(this).data('ratio')) + $zoomedImgMargin;
+			} else {
+				factor = ($(window).height() *.9) + $zoomedImgMargin;
 			}
 
 			scrollTarget += factor;
@@ -59,8 +61,10 @@ function Mozoom () {
 		// Calculate the height of zoomed targetImage 
 		if (targetImage.children().hasClass('portrait')) {
 			targetImageHeight = $(window).height() * .9;
-		}	else {
+		} else if (targetImage.children().hasClass('landscape')) {
 			targetImageHeight = ($(window).width() * .5) * (targetImage.children().data('ratio'));
+		} else {
+			targetImageHeight = $(window).height() * .9;
 		}
 
 		// Substract half of targetImage's height
@@ -101,14 +105,14 @@ function Mozoom () {
 				next();			
 			})
 			.queue('zoomIn', function(next){
-				$(this).find('.landscape, .square').animate({ 
+				$(this).find('.landscape').animate({ 
 					"width": "50vw",
 					"margin-bottom": $zoomedImgMargin
 				}, { duration: $zoomMovement });
 				next();			
 			})
 			.queue('zoomIn', function(next){
-				$(this).find('.portrait')
+				$(this).find('.portrait, .square')
 				.animate({ 
 					"height": "90vh",
 					"margin-bottom": $zoomedImgMargin
@@ -199,14 +203,14 @@ function Mozoom () {
 			next();
 		})
 		.queue('zoomOut', function(next){
-			$(this).find('.landscape, .square').animate({ 
+			$(this).find('.landscape').animate({ 
 				"width": "14vw",
 				"margin-bottom": $unZoomedImgMargin
 			}, { duration: $zoomMovement });
 			next();
 		})
 		.queue('zoomOut', function(next){
-			$(this).find('.portrait').animate({ 
+			$(this).find('.portrait, .square').animate({ 
 				"height": "25vh",
 				"margin-bottom": $unZoomedImgMargin
 			}, { duration: $zoomMovement });
