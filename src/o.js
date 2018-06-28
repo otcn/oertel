@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+		
 	$('#overlay').hide();
 	$('.set-head i').hide();
 

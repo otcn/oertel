@@ -5,8 +5,8 @@ function Mozoom () {
 
 	$zoomedImgMargin		= 300;				// Define bottom margin for zoomded images
 	$unZoomedImgMargin		= 120;				// Define bottom margin for unzoomded images			
-	$faderMovement			= 400;				// Define speed for fades
-	$zoomMovement			= 100;				// Define speed for zooms
+	$faderMovement			= 2000;				// Define speed for fades
+	$zoomMovement			= 2000;				// Define speed for zooms
 
 	// store original image height including margin
 	$('.set').each(function(){
@@ -85,13 +85,19 @@ function Mozoom () {
 					'opacity': 1
 				});
 			});
+
+			headerHeight = parseInt($('header').height(), 10);
+			bodyPadding = parseInt($('body').css("padding-top"), 10);
+			contentPadding = parseInt($('#content').css("padding-top"), 10);
+			realHeaderHeight = headerHeight + bodyPadding + contentPadding;
+	
 			
 			// prepare zooming set and run queues
 			targetSet
 			.queue('zoomIn', function(next){
 				$(this).css({
 					'left': ogOffset.left + 'px',
-					'top': ogOffset.top + 140 + 'px' ,
+					'top': ogOffset.top + realHeaderHeight,
 					'position': 'absolute'
 				});
 				next();
@@ -109,14 +115,27 @@ function Mozoom () {
 					"width": "50vw",
 					"margin-bottom": $zoomedImgMargin
 				}, { duration: $zoomMovement });
+
+				if(targetImage.is(':last-child') && targetImage.children().hasClass('landscape')) {
+					targetImage.children().animate({ 
+						"width": "50vw",
+						"margin-bottom": (($(window).height()) - (($(window).width() * .5) * (targetImage.children().data('ratio'))))*.5
+					}, { duration: $zoomMovement });
+				}
 				next();			
 			})
 			.queue('zoomIn', function(next){
-				$(this).find('.portrait, .square')
-				.animate({ 
+				$(this).find('.portrait, .square').animate({ 
 					"height": "90vh",
 					"margin-bottom": $zoomedImgMargin
 				}, { duration: $zoomMovement });
+
+				if(targetImage.is(':last-child') && targetImage.children().hasClass('portrait') || targetImage.children().hasClass('square')) {
+					targetImage.children().animate({ 
+						"height": "90vh",
+						"margin-bottom": $(window).height()*.05
+					}, { duration: $zoomMovement });
+				}
 				next();			
 			})
 			.queue('zoomIn', function(next){
@@ -173,7 +192,7 @@ function Mozoom () {
 			
 			$(this).animate({
 				"left": ogOffset.left + "px",
-				"top": ogOffset.top + 140 + "px",
+				"top": ogOffset.top,
 				"width": "25vw"
 			}, $zoomMovement)
 			.promise().done(function(){
