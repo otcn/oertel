@@ -15,12 +15,12 @@
 	  
     <?php foreach ($pages->visible() as $set): ?>
       <section class="set s" id="<?= $set->uid() ?>">
-        <div class="set-head">
-          <p class="caret-left">◀︎</p>
-          <h3> <?= $set->title() ?> </h3>
-          <p class="placeholder"></p>
-          <p class="caret-right">▶︎</p>
-        </div>
+          <div class="set-head">
+            <span class="caret-left">◀︎</span>
+            <h3> <?= $set->title() ?> </h3>
+            <p class="placeholder"></p>
+            <span class="caret-right">▶︎</span>
+          </div>
 
         <?php
           if ($set->uid() != 'featured') {

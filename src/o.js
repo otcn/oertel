@@ -1,16 +1,31 @@
 $(document).ready(function(){
 		
 	$('#overlay').hide();
-	$('.set-head i').hide();
+
+	$('.set').first().addClass('visibleSet');
+
+	$('.caret-left').click(function(){
+		$(this).closest('.set').removeClass('visibleSet');
+		$(this).closest('.set').prev().addClass('visibleSet');
+
+		if($(this).closest('.set').is(':first-child')) {
+			$('.set').last().addClass('visibleSet');
+		}
+	});
+	
+	$('.caret-right').click(function(){
+		$(this).closest('.set').removeClass('visibleSet');
+		$(this).closest('.set').next().addClass('visibleSet');
+
+		if($(this).closest('.set').is(':last-child')) {
+			$('.set').first().addClass('visibleSet');
+		}
+	});
+
+	
 
 	var mo = new Mozoom();
 	var portfolioImages = $('.set figure');
-	
-	var slickOptions = {
-		infinite: true,
-		adaptiveHeight: true,
-		arrows: false
-	}
 		
 	// debouncer
 	function debounce(func, wait, immediate) {
@@ -33,24 +48,12 @@ $(document).ready(function(){
 
 		if ($('#mobile-page-header').is(':visible')) {
 
-			height = $('.slick-active').height();
-			console.log($('.slick-current').height());
-			console.log($('.slick-active').height());
-
-			$('.page-body').slick(slickOptions);
-			$('.slick-list').css("height", height);
-			$('.page-body').addClass('slicked');
-
-			$('.caret-left').click(function(){
-				$('.page-body').slick('slickPrev');
-			})
-			
-			$('.caret-right').click(function(){
-				$('.page-body').slick('slickNext');
-			})
-
 			portfolioImages.unbind('click');
 			$('img').unbind('mouseenter');
+
+			// Prevent visible page body in case page is taller than the zoomed set
+			console.log(setContainer);
+			this.setContainer.css('max-height', $(window).height());
 
 		} else {
 
@@ -66,13 +69,10 @@ $(document).ready(function(){
 				$('.set-head .placeholder').text('');
 			});
 		}
-
 	});
 
-	conditionallySlick();
-
 	// listen for window to become small
-		$(window).resize(function(){
+		/* $(window).resize(function(){
 			
 			if($('.page-body').hasClass('slicked')) {
 				if(window.innerWidth >= 800) {
@@ -83,12 +83,7 @@ $(document).ready(function(){
 				conditionallySlick();
 			}
 
-		});
-
-	/* portfolioImages.click(function(e){
-		var targetSet = '#'+$(this).data('set');
-		mo.zoomToggle($(targetSet), $(this));
-	}); */
+		}); */
 
 	// Function to show and hide information
 	$('.info').hide();

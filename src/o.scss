@@ -222,6 +222,15 @@ a {
 	and (min-width: 320px)
 	and (max-width: 800px) 
 	and (-webkit-min-device-pixel-ratio: 2) {
+
+
+		.set {
+			display: none;
+		}
+
+		.visibleSet {
+			display: block;
+		}
 		
 		body {
 			font-family: sans-serif;
@@ -230,6 +239,10 @@ a {
 
 		h1, h2, h3, h4 {
 			font-size: 10pt;
+		}
+
+		h1, h2, h3, h4, h5, p {
+			margin-left: 7.5vw;
 		}
 
 		.mobile-page-header {
@@ -256,22 +269,34 @@ a {
 		.infoButton {
 			position: absolute;
 			top: 12px;
-			right: 25px;
+			right: 7.5vw;
 		}
 
 		.info {
 			display: none;
 		}
 
+		.flex {
+			display: block;
+		}
+
 		.page-body {
+
+			//width: 400vw;
+
 			.set {
+
+				width: 100vw;
+				background: white;
+				//position: absolute;
+
 				.landscape, .portrait, .square {
 					display: block;
 					margin: 0 auto 70px auto;
 		
 					cursor: pointer;
 		
-					width: 80%;
+					width: 85%;
 				}
 
 				.portrait, .square {
@@ -293,21 +318,23 @@ a {
 
 			padding-top: 23px;
 
-			position: -webkit-sticky;
-			//position: sticky;
-			top: 0px;
-
 			
 			.caret-left, .caret-right {
 				display: block;
-				flex-grow: 1;
+				width: 14vw;
 				font-size: .7em;
 
 				cursor: pointer;
 			}
 			
 			.caret-left {
-				margin-left: 30px;
+				padding-left: 7.5vw;
+			}
+
+			.caret-right {
+				position: absolute;
+				top: 12px;
+				right: 25px;
 			}
 
 			h3 {

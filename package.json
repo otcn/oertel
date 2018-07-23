@@ -12,6 +12,7 @@
     "grunt-contrib-watch": "^0.6.1"
   },
   "dependencies": {
+    "stickybits": "^3.4.1",
     "zooming": "^2.0.0"
   }
 }
