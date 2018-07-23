@@ -1,0 +1,3 @@
+<div data-set="<?= $set ?>" data-project="<?= $project ?>" class="vid <?= $orientation ?>" data-size="large" data-format="landscape" data-title="<?= $hoverTitle ?>" data-ratio="<?= $ratio ?>" data-embed="" data-vidthumb="<?= $url ?>">
+	<iframe src="https://player.vimeo.com/video/<?= $video ?>?background=1&autoplay=1&loop=1&color=000&title=0&byline=0&portrait=0" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>

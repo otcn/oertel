@@ -3,6 +3,11 @@ title: Project
 pages: false
 files: true
   sortable: true
+  fields:
+  	video:
+  		type: text
+  		label: Video
+  		help: Enter Vimeo ID here to turn this into a video
 
 icon: image
 

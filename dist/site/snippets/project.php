@@ -7,6 +7,12 @@
 
   <?php foreach($project->files()->sortBy('sort', 'asc') as $image): ?>
   	<?= $project->page() ?>
-    <?php snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title())); ?>
+    <?php 
+	    if ($image->video()->empty()) {
+	    	snippet('image', array('url' => $image->url(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title()));
+			} else {
+		    snippet('video', array('video' => $image->video(), 'url' => $image->url(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $project->slug(), 'set' => $project->parent()->slug(), 'hoverTitle' => $project->title()));			
+			}
+		?>
   <?php endforeach ?>
 </div>
