@@ -44,20 +44,17 @@ $(document).ready(function(){
 	};
 	
 	// inits slick slider if screen is small as indicated by presence of mobile header || breakpoint
-	var conditionallySlick = debounce(function() {
+	var mobile = debounce(function() {
 
 		if ($('#mobile-page-header').is(':visible')) {
 
 			portfolioImages.unbind('click');
 			$('img').unbind('mouseenter');
 
-			// Prevent visible page body in case page is taller than the zoomed set
-			console.log(setContainer);
-			this.setContainer.css('max-height', $(window).height());
-
 		} else {
 
 			portfolioImages.click(function(e){
+				console.log('click')
 				var targetSet = '#'+$(this).data('set');
 				mo.zoomToggle($(targetSet), $(this));
 			});
@@ -70,6 +67,8 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	mobile();
 
 	// listen for window to become small
 		/* $(window).resize(function(){

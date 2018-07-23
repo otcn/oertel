@@ -67,8 +67,7 @@
       <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
     </div>
 
-    <!--  <i class="far fa-info-circle"></i> -->
-    <p class="infoButton">ℹ︎</p>
+    <span class="infoButton">ℹ︎</span>
 
     <div class="info">
       <div class="about l">

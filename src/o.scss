@@ -223,7 +223,6 @@ a {
 	and (max-width: 800px) 
 	and (-webkit-min-device-pixel-ratio: 2) {
 
-
 		.set {
 			display: none;
 		}
@@ -268,8 +267,13 @@ a {
 
 		.infoButton {
 			position: absolute;
-			top: 12px;
+			top: 15px;
 			right: 7.5vw;
+			font-size: .9em;
+		}
+
+		span {
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
 		}
 
 		.info {
@@ -282,17 +286,51 @@ a {
 
 		.page-body {
 
-			//width: 400vw;
-
 			.set {
 
 				width: 100vw;
 				background: white;
-				//position: absolute;
+
+				.set-head {
+					display: flex;
+		
+					border-top: 1px solid rgb(128, 128, 128);
+					border-bottom: 1px solid rgb(128, 128, 128);;
+					border-right: 1px solid rgb(128, 128, 128);
+					background-color: white;
+				
+					min-height: 60px;
+					margin-bottom: 120px;		
+					
+					.caret-left, .caret-right {
+						display: block;
+						width: 21vw;
+						font-size: 2em;
+						line-height: .35em;
+		
+						cursor: pointer;
+					}
+					
+					.caret-left {
+						padding-left: 7.5vw;
+					}
+		
+					.caret-right {
+						position: absolute;
+						right: 0;
+						text-align: end;
+						padding-right: 7.5vw;
+						height: 45px;
+					}
+		
+					h3 {
+						margin: 0;
+					}
+				}
 
 				.landscape, .portrait, .square {
 					display: block;
-					margin: 0 auto 70px auto;
+					margin: 0 auto 120px auto;
 		
 					cursor: pointer;
 		
@@ -302,44 +340,27 @@ a {
 				.portrait, .square {
 					height: auto;
 				}
-			}
-		}
 
-		.set-head {
-			display: flex;
+				.project:nth-child(2) {
+					.project-head {
+						hr {
+							display: none;
+						}
+					}
+				}
 
-			border-top: 1px solid rgb(128, 128, 128);
-			border-bottom: 1px solid rgb(128, 128, 128);;
-			border-right: 1px solid rgb(128, 128, 128);
-			background-color: white;
-		
-			min-height: 60px;
-			margin-bottom: 70px;
+				.project-head {
+					opacity: 1;
+					margin-bottom: 30px;
+					height: auto;
+					overflow: unset;
+					position: relative;
+					top: 0;
 
-			padding-top: 23px;
-
-			
-			.caret-left, .caret-right {
-				display: block;
-				width: 14vw;
-				font-size: .7em;
-
-				cursor: pointer;
-			}
-			
-			.caret-left {
-				padding-left: 7.5vw;
-			}
-
-			.caret-right {
-				position: absolute;
-				top: 12px;
-				right: 25px;
-			}
-
-			h3 {
-				margin: 0;
-				flex-grow: 5;
+					p, h5 {
+						width: 80%;
+					}
+				}
 			}
 		}
 }
