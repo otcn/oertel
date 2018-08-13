@@ -2,7 +2,7 @@ $(document).ready(function(){
 		
 	$('#overlay').hide();
 
-	$('.set').first().addClass('visibleSet');
+	//$('.set').first().addClass('visibleSet');
 
 	$('.caret-left').click(function(){
 		$(this).closest('.set').removeClass('visibleSet');
@@ -54,7 +54,6 @@ $(document).ready(function(){
 		} else {
 
 			portfolioImages.click(function(e){
-				console.log('click')
 				var targetSet = '#'+$(this).data('set');
 				mo.zoomToggle($(targetSet), $(this));
 			});

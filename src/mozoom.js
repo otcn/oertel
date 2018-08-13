@@ -5,7 +5,7 @@ function Mozoom () {
 
 	$zoomedImgMargin		= 300;				// Define bottom margin for zoomded images
 	$unZoomedImgMargin		= 120;				// Define bottom margin for unzoomded images			
-	$faderMovement			= 200;				// Define speed for fades
+	$faderMovement			= 0;				// Define speed for fades
 	$zoomMovement			= 200;				// Define speed for zooms
 
 
@@ -25,11 +25,10 @@ function Mozoom () {
 	*/
 
 	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
-
 		ogScrollTop = $(window).scrollTop();
 
 		// Make sure the div: #faderOverlay will not cover the target Set
-		targetSet.css({ "z-index": "20" });
+		//targetSet.css({ "z-index": "20" });
 
 		// Hide navigation headers		
 		targetSet.children('.set-head').fadeOut($faderMovement);
@@ -41,9 +40,10 @@ function Mozoom () {
 
 		// Calculate height of all images (including margins) before TargetImage
 		// The top edge of targetImage is now equal to the top edge of the window
+		
 		var scrollTarget = 0;	
 		var factor = 0;
-		
+		/*
 		targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {
 			
 			if ($(this).hasClass('portrait')) {
@@ -76,10 +76,11 @@ function Mozoom () {
 		// Add half of the windows height
 		// The targetImage is now in the middle of the window
 		scrollTarget -= $(window).height() * .5;
-
+*/
 		// Fade in div: #faderOverlay with callback-function
 		$('#faderOverlay').fadeIn($faderMovement, function() {
-
+			
+			/*
 			// prepare showing headers
 			targetSet
 			.queue('showHeaders', function(){
@@ -87,104 +88,46 @@ function Mozoom () {
 					'opacity': 1
 				});
 			});
-
+			*/
+			targetSet.find('img').not($(targetImage).children().first()).attr('src', '');
+			
+			/*
 			headerHeight = parseInt($('header').height(), 10);
 			bodyPadding = parseInt($('body').css("padding-top"), 10);
 			contentPadding = parseInt($('#content').css("padding-top"), 10);
 			realHeaderHeight = headerHeight + bodyPadding + contentPadding + 5;
-	
-
+			*/
 			
-			// prepare zooming set and run queues
-			targetSet
+			zoomedSet = targetSet.clone().appendTo(targetSet.parent()).addClass('zoomedSet');
+			console.log(zoomedSet);
 			
-			// keep position of set, just make it absolute
-			
-			
-				.queue('zoomIn', function(next){
-				$(this).css({
+			zoomedSet.css({
+				'z-index': 20,
 					'left': ogOffset.left + 'px',
-					'top': ogOffset.top + realHeaderHeight,
+					//'top': ogOffset.top + realHeaderHeight,
 					'width': ogWidth,
-					'position': 'absolute'
+				'position': 'absolute',
+			})
+			
+			.queue('zoomIn', function(next){
+				$(this).css({
+					'width': '100vw',
+					'left': 0,
+					'top': 0
 				});
-				next();
-			})
-			
-			
-			// resize set to full window width
-			
-			.queue('zoomIn', function(next){
-				$(this).animate({
-					"left": "0",
-					"top": "0",
-					"width": '100vw',
-				}, { duration: $zoomMovement });
-				//$(this).remove().appendTo('body');
-				next();
-			})
-			
-			
-			// animate landscape images
-			/*
-			.queue('zoomIn', function(next){
-				$(this).find('.landscape').animate({ 
-					"width": "60vw",
-					"margin-bottom": $zoomedImgMargin
-				}, { duration: $zoomMovement });
-				next();
-
-				/* if(targetImage.is(':last-child') && targetImage.children().hasClass('landscape')) {
-					targetImage.children().animate({ 
-						"width": "50vw",
-						"margin-bottom": (($(window).height()) - (($(window).width() * .6) * (targetImage.children().data('ratio'))))*.6
-					}, { duration: $zoomMovement });
-				}
-				next();
-				*/		
-			
-			/*
-			})
-			*/
-			
-			.queue('zoomIn', function(next){
-				$(this).find('.portrait, .square').animate({ 
-					"height": "90vh",
-					"margin-bottom": $zoomedImgMargin
-				}, { duration: $zoomMovement });
-				next();
 				
+				$(this).on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+        	console.log('done');
+         
+					$(this).find('img').each(function() {
+					//	$(this).attr('src', $(this).data('src'));
+					});
 				
-				
-				/* if(targetImage.is(':last-child') && targetImage.children().hasClass('portrait') || targetImage.children().hasClass('square')) {
-					targetImage.children().animate({ 
-						"height": "90vh",
-						"margin-bottom": $(window).height()*.05
-					}, { duration: $zoomMovement });
-				}
-				next();
-				*/
-
-			})
-	
-			
-			/*
-			.queue('zoomIn', function(next){
-				$(this).find('.project .project-head').animate({
-					'margin-bottom': '300px'
-				}, { duration: $zoomMovement });
+	    	});
 				next();
 			})
-			*/
 			
-			/*
-			.queue('zoomIn', function(next){
-				$('html, body').animate({
-					scrollTop: scrollTarget
-				}, { duration: $zoomMovement });
-				targetSet.dequeue('showHeaders');
-			})
-			*/
+					
 			.dequeue('zoomIn');
 		});
 			
@@ -192,7 +135,7 @@ function Mozoom () {
 		this.setContainer.css('max-height', $(window).height());
 
 		// Add class to describe current state of set
-		targetSet.addClass('setZoomed');
+		//targetSet.addClass('setZoomed');
 	}
 
 
