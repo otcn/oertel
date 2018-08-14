@@ -25,120 +25,21 @@ function Mozoom () {
 	*/
 
 	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
-		ogScrollTop = $(window).scrollTop();
-
-		// Make sure the div: #faderOverlay will not cover the target Set
-		//targetSet.css({ "z-index": "20" });
-
-		// Hide navigation headers		
-		targetSet.children('.set-head').fadeOut($faderMovement);
-		$('footer').hide();
-
-		// Get values for top and left position of target Set …
-		ogOffset = targetSet.offset();
-		ogWidth = targetSet.width();
-
-		// Calculate height of all images (including margins) before TargetImage
-		// The top edge of targetImage is now equal to the top edge of the window
+		zoomedImage = targetImage
+									.clone()
+									.appendTo('body')
+									.css({
+										'position': 'absolute',
+										'z-index': 20
+									});
 		
-		var scrollTarget = 0;	
-		var factor = 0;
-		/*
-		targetSet.find('img').slice(0, targetSet.find('img').index(targetImage.children().first())).each(function() {
-			
-			if ($(this).hasClass('portrait')) {
-				factor = ($(window).height() *.9) + $zoomedImgMargin;
-			} else if ($(this).hasClass('landscape')) {
-				factor = ($(window).width() * .6 * $(this).data('ratio')) + $zoomedImgMargin;
-			} else {
-				factor = ($(window).height() *.9) + $zoomedImgMargin;
-			}
-
-			scrollTarget += factor;
+		zoomedImage.css({
+			'left': 0,
+			'top': $(window).scrollTop(),
+			'width': '100vw'
 		});
-		
-		// Calculate project head heights			
-		scrollTarget += (targetImage.parent().prevAll('.project').length+1)*$zoomedImgMargin;
 
-		// Calculate the height of zoomed targetImage 
-		if (targetImage.children().hasClass('portrait')) {
-			targetImageHeight = $(window).height() * .9;
-		} else if (targetImage.children().hasClass('landscape')) {
-			targetImageHeight = ($(window).width() * .6) * (targetImage.children().data('ratio'));
-		} else {
-			targetImageHeight = $(window).height() * .9;
-		}
-
-		// Substract half of targetImage's height
-		// The middle of targetImage is now equal to the top edge of the window
-		scrollTarget += targetImageHeight * .5;
-
-		// Add half of the windows height
-		// The targetImage is now in the middle of the window
-		scrollTarget -= $(window).height() * .5;
-*/
-		// Fade in div: #faderOverlay with callback-function
-		$('#faderOverlay').fadeIn($faderMovement, function() {
-			
-			/*
-			// prepare showing headers
-			targetSet
-			.queue('showHeaders', function(){
-				targetSet.find('.project-head').delay($faderMovement).animate({
-					'opacity': 1
-				});
-			});
-			*/
-			targetSet.find('img').not($(targetImage).children().first()).attr('src', '');
-			
-			/*
-			headerHeight = parseInt($('header').height(), 10);
-			bodyPadding = parseInt($('body').css("padding-top"), 10);
-			contentPadding = parseInt($('#content').css("padding-top"), 10);
-			realHeaderHeight = headerHeight + bodyPadding + contentPadding + 5;
-			*/
-			
-			zoomedSet = targetSet.clone().appendTo(targetSet.parent()).addClass('zoomedSet');
-			console.log(zoomedSet);
-			
-			zoomedSet.css({
-				'z-index': 20,
-					'left': ogOffset.left + 'px',
-					//'top': ogOffset.top + realHeaderHeight,
-					'width': ogWidth,
-				'position': 'absolute',
-			})
-			
-			.queue('zoomIn', function(next){
-				$(this).css({
-					'width': '100vw',
-					'left': 0,
-					'top': 0
-				});
-				
-				$(this).on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
-        	console.log('done');
-         
-					$(this).find('img').each(function() {
-					//	$(this).attr('src', $(this).data('src'));
-					});
-				
-	    	});
-				next();
-			})
-			
-					
-			.dequeue('zoomIn');
-		});
-			
-		// Prevent visible page body in case page is taller than the zoomed set
-		this.setContainer.css('max-height', $(window).height());
-
-		// Add class to describe current state of set
-		//targetSet.addClass('setZoomed');
-	}
-
-
+	};
 	/*
 		ZOOM OUT
 	*/

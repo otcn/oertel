@@ -125,8 +125,8 @@ a {
 
 .set {
 		box-sizing: border-box;
-		background: pink;
-		-webkit-transition: all 300ms ease;
+		background: #fff;
+		//-webkit-transition: all 300ms ease;		
 		
 		.set-head {
 			border-top: 1px solid rgb(128, 128, 128);
@@ -176,19 +176,6 @@ a {
 				width: 15%;
 			}
 		}
-		
-		img {
-	
-			display: block;
-			margin: 0 auto;
-
-			cursor: pointer;
-
-			margin-bottom: 120px;
-			
-			width: 60%;
-			height: auto;
-		}
 			
 		.portrait, .square {
 			//height: 25vh;
@@ -200,7 +187,29 @@ a {
 			//width: 14vw;;
 		}
 	}
+		
+		figure {
+				-webkit-transition: all 300ms ease;
+				background: #fff;
+				
+			img {
+				
+				display: block;
+				margin: 0 auto;
+			
+				cursor: pointer;
+			
+				-webkit-transition: opacity 200ms ease;
 
+			
+				margin-bottom: 120px;
+				margin: 0 auto 120px;
+				
+				width: 35%;
+				height: auto;
+			}
+		}
+		
 .overlay {
 	position: absolute;
 	left: 0;
