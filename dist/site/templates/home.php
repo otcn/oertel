@@ -51,7 +51,7 @@
                   <?= $image->page()->copy()->kirbytext() ?>
                 </div>
 
-                <?php snippet('image', array('url' => $imageURL, 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $image->page()->title())) ?>
+                <?php snippet('image', array('url' => $imageURL, 'slug' => $image->name(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $image->page()->title())) ?>
               </div>
             <?php endif; endforeach ?>
 
