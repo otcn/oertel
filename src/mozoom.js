@@ -2,8 +2,9 @@
 function Mozoom () {
 	this.setSizeClass		= 's'
 	this.setContainer		= $('#content');	// define wrapper container
-	this.animationSpeed	= 200 ;	// Global animation speed
-	
+	this.animationSpeed	= 200;	// Global animation speed
+
+	$scrollPosition = 0;		// Initial scroll position	
 	$zoomedImgWidth			= .35; 	// Define image width of zoomed images, relative to viewport width
 	$zoomedSetPadding		= .3;		// Define top and bottom padding of zoomed sets
 }
@@ -17,6 +18,12 @@ function Mozoom () {
 		zoomedSet.addClass('zoomedSet');
 		
 		// here we go
+		
+		// save current scroll position
+		$scrollPosition = $(window).scrollTop();
+		console.log($scrollPosition);
+		
+		// clone set to be zoomed
 		zoomedSet.appendTo('body')
 		.css({
 			'position': 'absolute',
@@ -55,6 +62,7 @@ function Mozoom () {
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
 		zoomedSet.fadeOut(this.animationSpeed, function(){
 			$(this).remove();
+			$(window).scrollTop($scrollPosition);
 		});
 	}
 	
