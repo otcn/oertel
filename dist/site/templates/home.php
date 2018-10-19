@@ -1,7 +1,5 @@
 <?php snippet('header') ?>
 
-  <div id="overlay" class="overlay"></div>
-
   <div id="content" class="page-body flex">
 	  <?php
 		  	// grab a full set of all used images, just in case

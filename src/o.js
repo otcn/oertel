@@ -1,9 +1,5 @@
 $(document).ready(function(){
 		
-	$('#overlay').hide();
-
-	//$('.set').first().addClass('visibleSet');
-
 	$('.caret-left').click(function(){
 		$(this).closest('.set').removeClass('visibleSet');
 		$(this).closest('.set').prev().addClass('visibleSet');
