@@ -18,6 +18,7 @@ function Mozoom () {
 		// clone set to be zoomed
 		zoomedSet = targetSet.clone();
 		zoomedSet.children('.set-head').remove();
+		zoomedSet.addClass('zoomedSet');
 		
 		// save current scroll position
 		$scrollPosition = $(window).scrollTop();
