@@ -4,9 +4,10 @@ function Mozoom () {
 	this.setContainer		= $('#content');	// define wrapper container
 	this.animationSpeed	= 200;	// Global animation speed
 
-	$scrollPosition = 0;		// Initial scroll position	
 	$zoomedImgWidth			= .35; 	// Define image width of zoomed images, relative to viewport width
 	$zoomedSetPadding		= .3;		// Define top and bottom padding of zoomed sets
+
+	$('.project-head').hide();
 }
 
 	/*
@@ -20,10 +21,6 @@ function Mozoom () {
 		zoomedSet.children('.set-head').remove();
 		zoomedSet.addClass('zoomedSet');
 		
-		// save current scroll position
-		$scrollPosition = $(window).scrollTop();
-		console.log($scrollPosition);
-		
 		// scroll lock body
 		$('body').css('overflow', 'hidden');
 		
@@ -31,10 +28,8 @@ function Mozoom () {
 		zoomedSet
 		.css({
 			'position': 'absolute',
-			'padding-top': $(window).height()*$zoomedSetPadding,
-			'padding-bottom': $(window).height()*$zoomedSetPadding,
 			'left': 0,
-			'top': $scrollPosition,
+			'top': $(window).scrollTop(),
 			'width': '100vw',
 			'height': '100vh',
 			'overflow': 'scroll',
@@ -46,6 +41,16 @@ function Mozoom () {
 		.each(function() {							
 			defineZoomedSize($(this));
 		});
+		
+		// create padding around images to make sure first and last images can be centered
+		zoomedSet.find('.project-head').first().css({
+			'padding-bottom': $(window).height()*$zoomedSetPadding,
+			'margin-bottom': 0
+		});
+		zoomedSet.find('figure').last().css('padding-bottom',$(window).height()*$zoomedSetPadding);
+		
+		// show project headers
+		zoomedSet.find('.project-head').show();
 		
 		// identify zoomed equivalent of image
 		zoomedTargetImage = zoomedSet.find('figure[data-slug='+targetImage.data("slug")+']');
@@ -70,10 +75,8 @@ function Mozoom () {
 		zoomedSet.fadeOut(this.animationSpeed, function(){
 			$(this).remove();
 			$('body').css('overflow', 'auto');
-			// $(window).scrollTop($scrollPosition);
 		});
 	}
-	
 	
 	/* 
 		HELPERS
@@ -82,18 +85,18 @@ function Mozoom () {
 	function defineZoomedSize(img) {
 		var $windowWidth = $(window).width();		
 		img.css({
-				'height': $windowWidth*$zoomedImgWidth*img.data('ratio')
+			'height': $windowWidth*$zoomedImgWidth*img.data('ratio')
 		});
 	}
 		
 	Mozoom.prototype.rebuildZoomedImages = function() {
-		zoomedSet.find('img').each(function(){
-			defineZoomedSize($(this))
-		})
+		if (zoomedSet.length) {
+			zoomedSet.find('img').each(function(){
+				defineZoomedSize($(this))
+			})
+		}
 	};
-	
 
-		
 	/*
 		TOGGLE ZOOM
 	*/
