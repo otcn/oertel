@@ -2,25 +2,26 @@
 function Mozoom () {
 	this.setSizeClass		= 's'
 	this.setContainer		= $('#content');	// define wrapper container
-	this.animationSpeed	= 200;	// Global animation speed
+	this.animationSpeed	= 1200;	// Global animation speed
 
 	$zoomedImgWidth			= .35; 	// Define image width of zoomed images, relative to viewport width
 	$zoomedSetPadding		= .3;		// Define top and bottom padding of zoomed sets
 
 	$('.project-head').hide();
+	$('#faderOverlay').hide();
 }
 
 	/*
 		ZOOM IN
 	*/
 
-	Mozoom.prototype.zoomIn = function(targetSet, targetImage) {
+	Mozoom.prototype.zoomIn = function(targetSet, targetImage, animated) {
 	
 		// clone set to be zoomed
 		zoomedSet = targetSet.clone();
 		zoomedSet.children('.set-head').remove();
 		zoomedSet.addClass('zoomedSet');
-		
+			
 		// scroll lock body
 		$('body').css('overflow', 'hidden');
 		
@@ -60,20 +61,52 @@ function Mozoom () {
 		
 		// scroll to target image position
 		zoomedSet.scrollTop(pos);
+		
+		// should we animate zooming this set?
+		if (animated) {
+			
+			// clone image to be zoomed
+			clonedImage = targetImage.clone().css({
+				'z-index': 15,
+				'position': 'absolute',
+				'left': targetImage.offset().left,
+				'top': targetImage.offset().top,
+				'width': targetImage.width(),
+				'height': 'auto'
+			})
+			.attr('id','zoomedImage')
+			.appendTo('body');
+			
+			// overlay body, then show zoomed set
+			$('#faderOverlay').fadeIn(this.animationSpeed * .5, function(){						
+				zoomedSet.animate({
+		    	opacity: 1
+		    }, this.animationSpeed);		
+			});
+		
+		// zoom set without animation		
+		} else {
 
-		// show zoomed set    						
-		zoomedSet.animate({
-    	opacity: 1
-    }, this.animationSpeed);
-    		
+			zoomedSet.find('.project-head').css('opacity', 0);
+			zoomedSet.css('opacity',1);
+			zoomedSet.scroll(function(){
+				zoomedSet.find('.project-head').animate({
+					'opacity': 1
+				}, this.animationSpeed);
+			});
+			
+		};
+		
 	};
 			
 	/*
 		ZOOM OUT
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
-		zoomedSet.fadeOut(this.animationSpeed, function(){
+		$('#faderOverlay').hide();
+		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
 			$(this).remove();
+			$('#zoomedImage').remove();
 			$('body').css('overflow', 'auto');
 		});
 	}
@@ -102,10 +135,10 @@ function Mozoom () {
 	*/
 
 	// helper function recognizing a set's current zoom state
-	Mozoom.prototype.zoomToggle = function(targetSet, targetImage) {
-		if ($('.zoomedSet').length) {
-			this.zoomOut($('.zoomedSet'));
+	Mozoom.prototype.zoomToggle = function(targetSet, targetImage, introZoom) {
+		if (!$('.zoomedSet').length && targetSet && targetImage) {
+			this.zoomIn(targetSet, targetImage, introZoom);
 		} else {
-			this.zoomIn(targetSet, targetImage);
+			this.zoomOut($('.zoomedSet'));
 		}
 	}

@@ -39,8 +39,6 @@
                 $image = $portfolioImages->find(array_pop($filename));
                 if ($image !== null):
               ?>
-              
-              
 
               <div class="project">
                 <div class="project-head">

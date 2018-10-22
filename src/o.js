@@ -1,25 +1,7 @@
 $(document).ready(function(){
-		
-	$('.caret-left').click(function(){
-		$(this).closest('.set').removeClass('visibleSet');
-		$(this).closest('.set').prev().addClass('visibleSet');
-
-		if($(this).closest('.set').is(':first-child')) {
-			$('.set').last().addClass('visibleSet');
-		}
-	});
-	
-	$('.caret-right').click(function(){
-		$(this).closest('.set').removeClass('visibleSet');
-		$(this).closest('.set').next().addClass('visibleSet');
-
-		if($(this).closest('.set').is(':last-child')) {
-			$('.set').first().addClass('visibleSet');
-		}
-	});
-
 	var mo = new Mozoom();
 	var portfolioImages = $('.set figure');
+	var featuredSet = $('#featured');
 		
 	// debouncer
 	function debounce(func, wait, immediate) {
@@ -41,8 +23,26 @@ $(document).ready(function(){
 	var mobile = debounce(function() {
 
 		if ($('#mobile-page-header').is(':visible')) {
-			portfolioImages.unbind('click');
-			$('img').unbind('mouseenter');
+				portfolioImages.unbind('click');
+				$('img').unbind('mouseenter');
+				
+					$('.caret-left').click(function(){
+			$(this).closest('.set').removeClass('visibleSet');
+			$(this).closest('.set').prev().addClass('visibleSet');
+	
+			if($(this).closest('.set').is(':first-child')) {
+				$('.set').last().addClass('visibleSet');
+			}
+		});
+		
+		$('.caret-right').click(function(){
+			$(this).closest('.set').removeClass('visibleSet');
+			$(this).closest('.set').next().addClass('visibleSet');
+	
+			if($(this).closest('.set').is(':last-child')) {
+				$('.set').first().addClass('visibleSet');
+			}
+		});
 		
 		// desktop, zoom on click etc.
 		
@@ -50,14 +50,16 @@ $(document).ready(function(){
 			
 			portfolioImages.click(function(e){
 				e.stopPropagation();
-				var targetSet = '#'+$(this).data('set');				
-				mo.zoomToggle($(targetSet), $(this));
+				
+				if ($(this).is('figure')) {
+					var targetSet = '#'+$(this).data('set');
+					mo.zoomToggle($(targetSet), $(this), true);
+				}
 			});
 			
 			$(window).click(function(){
 					mo.zoomToggle()
 			})
-		
 			
 			// recalculate zoomed image sizes on window resize
 			var rebuild = debounce(function() {
@@ -73,24 +75,12 @@ $(document).ready(function(){
 				$('.set-head .placeholder').text('');
 			});
 			
+			// automatically zoom featured set on page load
+			mo.zoomToggle(featuredSet, featuredSet.find('figure').first(), false)
 		}
 	});
 
 	mobile();
-
-	// listen for window to become small
-		/* $(window).resize(function(){
-			
-			if($('.page-body').hasClass('slicked')) {
-				if(window.innerWidth >= 800) {
-					$('.page-body').slick('unslick');
-					$('.page-body').removeClass('slicked')
-				}
-			} else {
-				conditionallySlick();
-			}
-
-		}); */
 
 	// Function to show and hide information
 	$('.info').hide();

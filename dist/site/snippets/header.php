@@ -10,14 +10,8 @@
   
   <?= css('assets/css/Theinhardt-Regular.css') ?>
   <?= css('assets/css/o.css') ?>
-
+  
   <?= js('https://code.jquery.com/jquery-3.3.1.min.js') ?>
-  <?= js('https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js') ?>
-  
-  <!-- Mobile -->
-  <?= css('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css') ?>
-  <?= js('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js') ?>
-  
   <?= js('assets/js/o.min.js') ?>
 
   <meta property="og:title" content="<?= $site->title()->html() ?>">
@@ -58,10 +52,8 @@
     </div>
   </header>
 
-  <div id="faderOverlay"></div>
+  <div id="faderOverlay" class="faderOverlay"></div>
 
-
-  <!-- Mobile header -->
   <header id="mobile-page-header" class="mobile-page-header">
     <div class="author">
       <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
