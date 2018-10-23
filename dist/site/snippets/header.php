@@ -70,9 +70,8 @@
         <h2>Clients</h2>
         <?= $page->clients()->kirbytext() ?>
       </div>
-
-      <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
-      <h4> <?= $site->phone()->html() ?> </h4>
     </div>
+          <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
+      <h4> <?= $site->phone()->html() ?> </h4>
   </header>
 </body>

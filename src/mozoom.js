@@ -3,8 +3,9 @@ function Mozoom () {
 	this.setSizeClass		= 's'
 	this.setContainer		= $('#content');	// define wrapper container
 	this.animationSpeed	= 1200;	// Global animation speed
-
-	$zoomedImgWidth			= .35; 	// Define image width of zoomed images, relative to viewport width
+	
+	$portraitImgWidth		= .35;
+	$landscapeImgWidth	= .55;
 	$zoomedSetPadding		= .3;		// Define top and bottom padding of zoomed sets
 
 	$('.project-head').hide();
@@ -86,7 +87,7 @@ function Mozoom () {
 		
 		// zoom set without animation		
 		} else {
-
+			console.log('no animation zoom');
 			zoomedSet.find('.project-head').css('opacity', 0);
 			zoomedSet.css('opacity',1);
 			zoomedSet.scroll(function(){
@@ -103,6 +104,7 @@ function Mozoom () {
 		ZOOM OUT
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
+		console.log('zoomin out');
 		$('#faderOverlay').hide();
 		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
 			$(this).remove();
@@ -116,9 +118,13 @@ function Mozoom () {
 	*/
 	
 	function defineZoomedSize(img) {
-		var $windowWidth = $(window).width();		
+		var $windowWidth = $(window).width();
+		var w = $portraitImgWidth;
+		if (img.hasClass('landscape')) {
+			w = $landscapeImgWidth;
+		}
 		img.css({
-			'height': $windowWidth*$zoomedImgWidth*img.data('ratio')
+			'height': $windowWidth*w*img.data('ratio')
 		});
 	}
 		
