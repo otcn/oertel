@@ -1,6 +1,6 @@
 <?php snippet('errorHeader') ?>
  <div class="l">
-    <p>404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found</p>
-
-    <a href="<?= $site->url() ?>"> <p></br></br>← Back to main page</p></a>
+    <p>404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found</p>
+		<p><br/><br/></p>
+    <p><a href="<?= $site->url() ?>">Back to main page</a></p>
 </div>

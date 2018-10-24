@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	var mo = new Mozoom();
-	var portfolioImages = $('.set figure');
-	var featuredSet = $('#featured');
+	
+	var portfolioImages 	= $('.set figure');
+	var featuredSet				= $('#featured');
+		
 		
 	// debouncer
 	function debounce(func, wait, immediate) {
@@ -26,6 +28,7 @@ $(document).ready(function(){
 			
 			$('.set').first().show();
 			$('.project-head').show();
+			$('#faderOverlay').hide();
 			
 			// slide sets
 			$('.caret').click(function(){
@@ -41,7 +44,7 @@ $(document).ready(function(){
 					
 					else {
 						
-						active.fadeOut();
+						active.hide();
 						$('.set:first-child').show();
 					}
 					
@@ -53,8 +56,9 @@ $(document).ready(function(){
 					}	
 
 					else {
-						$('.set:visible').hide();
-						$('.set:last-child').hide();
+						
+						active.hide();
+						$('.set:last-child').show();
 					}					
 					
 				}
@@ -82,6 +86,7 @@ $(document).ready(function(){
 			// recalculate zoomed image sizes on window resize
 			var rebuild = debounce(function() {
 				mo.rebuildZoomedImages();
+				closeFeatured();
 			}, 250);	
 					
 			$(window).resize(rebuild);
@@ -95,16 +100,34 @@ $(document).ready(function(){
 			
 			// automatically zoom featured set on page load
 			mo.zoomToggle(featuredSet, featuredSet.find('figure').first(), false)
+			
+			// close featured set when scrolled to bottom
+			var closeFeatured = debounce(function() {
+				var featuredSet = $('.zoomedSet');
+				var exitOffset = 0;
+
+				featuredSet.children().each(function(){
+					exitOffset += $(this).outerHeight();	
+				});
+								
+				featuredSet.scroll(function() {
+					if ($(this).scrollTop()+$(window).height()*.5 > exitOffset) {
+						mo.zoomToggle();
+   	 			}
+				});				
+			},250);
+			
+			closeFeatured();
 		}
 	});
 
 	mobile();
 
 	// Function to show and hide information
-	$('.info').hide();
+	$('#mobileInfo').hide();
 
-	$('.infoButton').click(function() {
-		$('.info').toggle();
+	$('#mobileInfoButton').click(function() {
+		$('#mobileInfo').toggle();
 	});
 	
 });

@@ -14,11 +14,13 @@
   <?= js('https://code.jquery.com/jquery-3.3.1.min.js') ?>
   <?= js('assets/js/o.min.js') ?>
 
+	<meta property="og:type" content="website" />
   <meta property="og:title" content="<?= $site->title()->html() ?>">
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
   <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
   <meta property="og:image" content="<?= $site->socialImage()->url() ?>">
+	
 </head>
 
 <body>
@@ -59,9 +61,9 @@
       <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
     </div>
 
-    <span class="infoButton">ℹ︎</span>
+    <span id="mobileInfoButton" class="infoButton">ℹ︎</span>
 
-    <div class="info">
+    <div id="mobileInfo" class="info">
       <div class="about l">
         <?= $page->about()->kirbytext() ?>
       </div>

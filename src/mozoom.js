@@ -103,7 +103,6 @@ function Mozoom () {
 		ZOOM OUT
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
-		console.log('zoomin out');
 		$('#faderOverlay').hide();
 		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
 			$(this).remove();
