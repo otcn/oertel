@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     compass: {
 		  dist: {
 		    options: {
-        	banner: '/* MATTHIASOERTEL.DE — WORKBENCH (1.0/2018)\nW.A.F. — http://wearefellows.com */',
+        	banner: '/* MATTHIASOERTEL.DE (1.0/2018) - W.A.F. - https://wearefellows.com */',
 		      sassDir: 'src/',
 		      cssDir: 'dist/assets/css/',
 		      specify: 'src/*.scss',

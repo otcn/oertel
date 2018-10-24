@@ -9,7 +9,6 @@ function Mozoom () {
 	$zoomedSetPadding		= .3;		// Define top and bottom padding of zoomed sets
 
 	$('.project-head').hide();
-	$('#faderOverlay').hide();
 }
 
 	/*
@@ -87,7 +86,7 @@ function Mozoom () {
 		
 		// zoom set without animation		
 		} else {
-			console.log('no animation zoom');
+			$('#faderOverlay').show();
 			zoomedSet.find('.project-head').css('opacity', 0);
 			zoomedSet.css('opacity',1);
 			zoomedSet.scroll(function(){
