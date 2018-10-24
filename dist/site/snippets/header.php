@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex, nofollow">
 
   <title><?= $site->title()->html() ?> — <?= $page->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
@@ -19,7 +19,7 @@
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
   <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
-  <meta property="og:image" content="<?= $site->socialImage()->url() ?>">
+  <meta property="og:image" content="<?= $site->images()->find($site->socialImage())->thumb(array('width' => 800))->url() ?>">
 	
 </head>
 
