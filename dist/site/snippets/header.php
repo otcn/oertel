@@ -7,6 +7,7 @@
 
   <title><?= $site->title()->html() ?> — <?= $page->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   
   <?= css('assets/css/Theinhardt-Regular.css') ?>
   <?= css('assets/css/o.css') ?>
@@ -15,7 +16,7 @@
   <?= js('assets/js/o.min.js') ?>
 
 	<meta property="og:type" content="website" />
-  <meta property="og:title" content="<?= $site->title()->html() ?>">
+  <meta property="og:title" content="<?= $site->title()->kirbytext() ?>">
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
   <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
