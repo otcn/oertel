@@ -115,7 +115,7 @@ $(document).ready(function(){
 						mo.zoomToggle();
    	 			}
 				});				
-			},250);
+			}, 250);
 			
 			closeFeatured();
 		}
