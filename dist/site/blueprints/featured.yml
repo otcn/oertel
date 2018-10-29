@@ -19,6 +19,11 @@ fields:
     type:  text
     readonly: true
     
+  subline:
+  	label: Featured subline
+  	type: text
+  	help: Context text explaining the featured set
+    
   selectedImages:
     label: Selected Images
     type: structure

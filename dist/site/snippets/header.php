@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
   <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
-  <meta property="og:image" content="<?= $site->images()->find($site->socialImage())->thumb(array('width' => 800))->url() ?>">
+  <meta property="og:image" content="<?= (!$site->socialimage()->empty) ? '' : $site->images()->find($site->socialImage())->thumb(array('width' => 800))->url() ?>">
 	
 </head>
 
