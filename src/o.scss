@@ -18,8 +18,6 @@ video {
 
 
 
-
-
 // general
 
 html {
@@ -93,6 +91,10 @@ p {
 a {
 	color: black;
 	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 
@@ -100,6 +102,11 @@ a {
 
 .page-body {
 	padding-top: 5px;
+	
+	+ .prefooter {
+		text-align: center;
+		margin-bottom: 250px;
+	}
 }
 
 .set {
@@ -176,10 +183,16 @@ a {
 		}
 	}
 	
-	.zoomedSet img {
+.zoomedSet {
+	img {
 		margin-bottom: 250px;
 	}
 	
+	.project:first-child > .project-head {
+		margin-bottom: 15vh;
+	}
+}
+
 .faderOverlay {
 	position: fixed;
 	height: 100vh;

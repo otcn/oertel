@@ -1,4 +1,4 @@
-<?php snippet('errorHeader') ?>
+<?php snippet('header', ['singleset' => true]) ?>
  <div class="l">
     <p>404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found</p>
 		<p><br/><br/></p>

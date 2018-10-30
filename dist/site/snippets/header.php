@@ -5,26 +5,33 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
 
-  <title><?= $site->title()->html() ?> — <?= $page->title()->html() ?></title>
+  <title><?= $site->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   
   <?= css('assets/css/Theinhardt-Regular.css') ?>
   <?= css('assets/css/o.css') ?>
   
-  <?= js('https://code.jquery.com/jquery-3.3.1.min.js') ?>
-  <?= js('assets/js/o.min.js') ?>
+  <? 
+	  if (!$singleset) {
+			echo js('https://code.jquery.com/jquery-3.3.1.min.js');
+			echo js('assets/js/o.min.js');
+		}
+	?>
 
 	<meta property="og:type" content="website" />
   <meta property="og:title" content="<?= $site->title()->kirbytext() ?>">
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
   <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
-  <meta property="og:image" content="<?= (!$site->socialimage()->empty) ? '' : $site->images()->find($site->socialImage())->thumb(array('width' => 800))->url() ?>">
+  <?= (!$site->socialimage()->empty) ? '' : '<meta property="og:image" content="'.$site->images()->find($site->socialImage())->thumb(array('width' => 800))->url().'">' ?>
+  
 	
 </head>
 
-<body>
+<body <?= ($singleset) ? 'class="single"' : '' ?>>
+	<?php if (!$singleset): ?>
+	
   <header class="page-header">
     <div class="row flex">
       <div class="author s">
@@ -55,7 +62,9 @@
     </div>
   </header>
 
+
   <div id="faderOverlay" class="faderOverlay"></div>
+
 
   <header id="mobile-page-header" class="mobile-page-header">
     <div class="author">
@@ -77,4 +86,8 @@
           <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
       <h4> <?= $site->phone()->html() ?> </h4>
   </header>
+  
+  <?php else: snippet('miniHeader') ?>
+  <?php endif ?>
+ 
 </body>
