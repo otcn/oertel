@@ -104,10 +104,11 @@ $(document).ready(function(){
 			// close featured set when scrolled to bottom
 			var closeFeatured = debounce(function() {
 				var featuredSet = $('.zoomedSet');
+				var featuredImages = featuredSet.children('.project').children('figure');
 				var exitOffset = 0;
 
-				featuredSet.children().each(function(){
-					exitOffset += $(this).outerHeight();	
+				featuredImages.each(function(){
+					exitOffset += $(this).outerHeight();
 				});
 								
 				featuredSet.scroll(function() {
