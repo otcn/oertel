@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
+  <meta name="googlebot" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
 
   <title><?= $site->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">

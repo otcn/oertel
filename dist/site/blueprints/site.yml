@@ -34,7 +34,6 @@ fields:
     buttons:
       - link
 
-
 	socialImage:
 		label: Social image
 		type: image
@@ -45,3 +44,9 @@ fields:
 		type: textarea
 		buttons: false
 		help: Short description for search engines
+
+	indexing:
+		label: Search engine indexing
+		type: checkbox
+		text: Allow search engines to index this site
+		help: Toggles indexing by search engines. Does not apply to single set pages, as they are always hidden from search engines.
