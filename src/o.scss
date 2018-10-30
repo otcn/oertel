@@ -235,6 +235,12 @@ a {
 		.set {
 			display: none;
 		}
+		
+		body.single {
+			.set {
+				display: block;
+			}
+		}
 
 		h1, h2, h3, h4, h5, p {
 			margin-left: 7.5vw;
