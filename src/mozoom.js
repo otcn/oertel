@@ -21,9 +21,7 @@ function Mozoom () {
 		zoomedSet = targetSet.clone();
 		zoomedSet.children('.set-head').remove();
 		zoomedSet.addClass('zoomedSet');
-			
-		// scroll lock body
-		$('body').css('overflow', 'hidden');
+
 		
 		// display zoomed set
 		zoomedSet
@@ -78,8 +76,11 @@ function Mozoom () {
 			.appendTo('body');
 			
 			// overlay body, then show zoomed set
-			$('#faderOverlay').fadeIn(this.animationSpeed * .5, function(){						
-				zoomedSet.animate({
+			$('#faderOverlay').fadeIn(this.animationSpeed * .5, function(){				
+		
+			toggleScrollLock('false');
+
+			zoomedSet.animate({
 		    	opacity: 1
 		    }, this.animationSpeed);		
 			});
@@ -89,6 +90,9 @@ function Mozoom () {
 			$('#faderOverlay').show();
 			zoomedSet.find('.project-head').css('opacity', 0);
 			zoomedSet.css('opacity',1);
+			
+			toggleScrollLock('true');
+			
 			zoomedSet.scroll(function(){
 				zoomedSet.find('.project-head').animate({
 					'opacity': 1
@@ -103,17 +107,33 @@ function Mozoom () {
 		ZOOM OUT
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
+		
+		toggleScrollLock('true');
+
 		$('#faderOverlay').hide();
 		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
 			$(this).remove();
 			$('#zoomedImage').remove();
-			$('body').css('overflow', 'auto');
 		});
 	}
 	
 	/* 
 		HELPERS
 	*/
+	
+	function toggleScrollLock(unlock) {
+		if (!unlock) {
+			$('html, body').css({
+				'overflow': 'hidden',
+				'height': '100vh'
+			});
+		} else {
+			$('html, body').css({
+				'overflow': 'auto',
+				'height': 'auto',
+		});
+		}
+	}
 	
 	function defineZoomedSize(img) {
 		var $windowWidth = $(window).width();

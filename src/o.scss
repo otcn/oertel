@@ -32,8 +32,6 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
-	padding-top: 15px;
 }
 
 .flex {
@@ -100,6 +98,10 @@ a {
 
 
 // content
+
+.page-header {
+	margin-top: 15px;
+}
 
 .page-body {
 	padding-top: 5px;
