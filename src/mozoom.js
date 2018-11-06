@@ -77,8 +77,8 @@ function Mozoom () {
 			
 			// overlay body, then show zoomed set
 			$('#faderOverlay').fadeIn(this.animationSpeed * .5, function(){				
-		
-			toggleScrollLock('false');
+			
+			toggleScrollLock(false);
 
 			zoomedSet.animate({
 		    	opacity: 1
@@ -91,7 +91,7 @@ function Mozoom () {
 			zoomedSet.find('.project-head').css('opacity', 0);
 			zoomedSet.css('opacity',1);
 			
-			toggleScrollLock('true');
+			toggleScrollLock(false);
 			
 			zoomedSet.scroll(function(){
 				zoomedSet.find('.project-head').animate({
@@ -108,7 +108,7 @@ function Mozoom () {
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {
 		
-		toggleScrollLock('true');
+		toggleScrollLock(true);
 
 		$('#faderOverlay').hide();
 		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
@@ -130,8 +130,8 @@ function Mozoom () {
 		} else {
 			$('html, body').css({
 				'overflow': 'unset',
-				'height': 'auto',
-		});
+				'height': 'auto'
+			});
 		}
 	}
 	
