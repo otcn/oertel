@@ -129,7 +129,7 @@ function Mozoom () {
 			});
 		} else {
 			$('html, body').css({
-				'overflow': 'auto',
+				'overflow': 'unset',
 				'height': 'auto',
 		});
 		}

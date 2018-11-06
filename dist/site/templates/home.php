@@ -36,7 +36,7 @@
           ?>
 	          
 	          <div class="project">
-							<div class="project-head">
+							<div class="project-head featured-head">
               	<hr>
               	<h5>Matthias Oertel</h5>
 								<p><?= $site->pages()->find('featured')->subline() ?></p>

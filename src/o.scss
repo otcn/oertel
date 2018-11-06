@@ -160,6 +160,7 @@ a {
 			p, h5 {
 				width: 15%;
 			}
+
 		}
 		
 		.project:first-child .project-head hr {
@@ -357,6 +358,10 @@ a {
 				p, h5 {
 					width: 80%;
 					margin-bottom: 1em;
+				}
+				
+				&.featured-head h5 {
+					display: none;
 				}
 			}
 		}
