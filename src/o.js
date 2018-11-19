@@ -29,6 +29,7 @@ $(document).ready(function(){
 			$('.set').first().show();
 			$('.project-head').show();
 			$('#faderOverlay').hide();
+			$('#featured').remove();
 			
 			// slide sets
 			$('.caret').click(function(){

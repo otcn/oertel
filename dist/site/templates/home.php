@@ -21,30 +21,29 @@
             <p class="placeholder"></p>
             <span class="caret-right caret">›</span>
           </div>
-
+					
         <?php
 	        
-          if ($set->uid() != 'featured') {
-
-            // For normal sets
+	          // For normal sets
             foreach ($set->children() as $project) {
               snippet('project', array('project' => $project));
             }
-
-          } else { 
-	     
-          ?>
+        ?>
+      </section>
+      <?php endforeach ?>
+      
+      <section class="set s featured" id="featured">
+	        <?php $set = $site->children()->find('featured') ?>
 	          
 	          <div class="project">
 							<div class="project-head featured-head">
               	<hr>
               	<h5>Matthias Oertel</h5>
-								<p><?= $site->pages()->find('featured')->subline() ?></p>
+								<p><?= $site->children()->find('featured')->subline() ?></p>
             	</div>
 	          
 	          <?php
 						
-						// for the featured set
             foreach ($set->selectedImages()->toStructure() as $imageURL) {
             	
             	// get parent page of featured image
@@ -60,10 +59,7 @@
 						?>
 						
             </div>
-            
-            <?php } ?>
       </section>
-    <?php endforeach ?>
   </div>
 
 <?php snippet('footer') ?>

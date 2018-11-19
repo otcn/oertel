@@ -87,6 +87,7 @@ function Mozoom () {
 		
 		// zoom set without animation		
 		} else {
+			
 			$('#faderOverlay').show();
 			zoomedSet.find('.project-head').css('opacity', 0);
 			zoomedSet.css('opacity',1);
@@ -106,14 +107,21 @@ function Mozoom () {
 	/*
 		ZOOM OUT
 	*/
-	Mozoom.prototype.zoomOut = function(zoomedSet) {
-		
+	Mozoom.prototype.zoomOut = function(zoomedSet) {		
 		toggleScrollLock(true);
 
+		// if the featured set was zoomed, hide it when zooming out
+		if (zoomedSet.hasClass('featured')) {
+			$('#featured').remove();
+		}
+		
 		$('#faderOverlay').hide();
+
 		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
+
 			$(this).remove();
 			$('#zoomedImage').remove();
+
 		});
 	}
 	
