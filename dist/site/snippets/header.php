@@ -76,12 +76,12 @@
 
     <div id="mobileInfo" class="info">
       <div class="about l">
-        <?= $page->about()->kirbytext() ?>
+        <?= $site->about()->kirbytext() ?>
       </div>
 
       <div class="clients l">
         <h2>Clients</h2>
-        <?= $page->clients()->kirbytext() ?>
+        <?= $site->clients()->kirbytext() ?>
       </div>
     </div>
           <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
