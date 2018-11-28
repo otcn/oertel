@@ -49,9 +49,9 @@
             	// get parent page of featured image
               $filename = explode('/',$imageURL);
               $image = $portfolioImages->find(array_pop($filename));
-              
+
               if ($image !== null) {
-	           	 snippet('image', array('url' => $imageURL, 'slug' => $image->name(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $site->pages()->find('featured')->subline() ));
+	           	 snippet('image', array('url' => $image->url(), 'slug' => $image->name(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $site->pages()->find('featured')->subline() ));
 						 	}
 						 
 						}
