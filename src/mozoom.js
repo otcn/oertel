@@ -36,6 +36,7 @@ function Mozoom () {
 			'opacity': 0
 		})
 		.appendTo('body')
+		.removeAttr('id')
 		.find('img')
 		.each(function() {							
 			defineZoomedSize($(this));
@@ -109,16 +110,15 @@ function Mozoom () {
 	*/
 	Mozoom.prototype.zoomOut = function(zoomedSet) {		
 		toggleScrollLock(true);
-
-		// if the featured set was zoomed, hide it when zooming out
-		if (zoomedSet.hasClass('featured')) {
-			$('#featured').remove();
-		}
 		
+		// if the featured set was zoomed, hide it when zooming out
+			if (zoomedSet.hasClass('featured')) {
+				$('#featured').remove();
+		}
+			
 		$('#faderOverlay').hide();
 
-		zoomedSet.fadeOut(this.animationSpeed * .5, function(){
-
+		zoomedSet.fadeOut(this.animationSpeed * .5, function() {
 			$(this).remove();
 			$('#zoomedImage').remove();
 

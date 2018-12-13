@@ -113,6 +113,7 @@ $(document).ready(function(){
 				});
 								
 				featuredSet.scroll(function() {
+					console.log('scroll');
 					if ($(this).scrollTop()+$(window).height()*.5 > exitOffset) {
 						mo.zoomToggle();
    	 			}
