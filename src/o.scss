@@ -115,7 +115,6 @@ a {
 .set {
 		box-sizing: border-box;
 		background: #fff;
-		cursor: pointer;
 		
 		.set-head {
 			border-top: 1px solid rgb(128, 128, 128);
@@ -161,6 +160,10 @@ a {
 				width: 15%;
 			}
 
+		}
+		
+		.project {
+			cursor: pointer;
 		}
 		
 		.project:first-child .project-head hr {
