@@ -6,8 +6,8 @@
   <meta name="robots" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
   <meta name="googlebot" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
 
-  <title><?= $site->title()->html() ?></title>
-  <meta name="description" content="<?= $site->description()->html() ?>">
+  <title><?= $site->title() ?></title>
+  <meta name="description" content="<?= $site->description() ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   
   <?= css('assets/css/Theinhardt-Regular.css') ?>
@@ -21,11 +21,11 @@
 	?>
 
 	<meta property="og:type" content="website" />
-  <meta property="og:title" content="<?= $site->title()->kirbytext() ?>">
+  <meta property="og:title" content="<?= $site->title() ?>">
   <meta property="og:site_name" content="Matthias Oertel Photography">
   <meta property="og:url" content="<?= $site->url() ?>">
-  <meta property="og:description" content="<?= $site->description()->kirbytext() ?>">
-  <?= (!$site->socialimage()->empty) ? '' : '<meta property="og:image" content="'.$site->images()->find($site->socialImage())->thumb(array('width' => 800))->url().'">' ?>
+  <meta property="og:description" content="<?= $site->description() ?>">
+  <?= ($site->socialimage()->empty()) ? '' : '<meta property="og:image" content="'.$site->images()->find($site->socialImage())->thumb(array('width' => 800))->url().'">' ?>
   
 	
 </head>
