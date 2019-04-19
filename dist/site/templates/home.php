@@ -26,7 +26,9 @@
 	        
 	          // For normal sets
             foreach ($set->children() as $project) {
-              snippet('project', array('project' => $project));
+              if ($project->isVisible()) {
+                snippet('project', array('project' => $project));
+              }
             }
         ?>
       </section>
