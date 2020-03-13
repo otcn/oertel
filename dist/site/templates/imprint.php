@@ -1,5 +1,3 @@
 <?php snippet('header', ['singleset' => true]) ?>
 	  
-<?php foreach($pages->invisible() as $imprint): ?>
-    <div class="l"><?= $imprint->copy()->kirbytext() ?></div>
-<?php endforeach ?>
+<div class="l"><?= $page->copy()->kirbytext() ?></div>
