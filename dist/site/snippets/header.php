@@ -88,7 +88,5 @@
       <h4> <?= $site->phone()->html() ?> </h4>
   </header>
   
-  <?php else: snippet('miniHeader') ?>
+  <?php else: snippet('miniheader') ?>
   <?php endif ?>
- 
-</body>
