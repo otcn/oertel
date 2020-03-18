@@ -1,6 +1,7 @@
 title: Project
 
 pages: false
+preview: false
 files: true
   sortable: true
 
