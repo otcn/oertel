@@ -2,5 +2,5 @@
  <div class="l">
     <p>404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found 404 not found</p>
 		<p><br/><br/></p>
-    <p><a href="<?= $site->url() ?>">Back to main page</a></p>
+    <p><a class="backlink" href="<?= $site->url() ?>">Return to portfolio</a></p>
 </div>

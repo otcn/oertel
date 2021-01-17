@@ -45,6 +45,10 @@ body {
 	width: 25%;
 }
 
+.m {
+	width: 70%;
+}
+
 .l {
 	width: 95%;
 }
@@ -69,7 +73,7 @@ h1, h2, h3, h4, h5, p {
 	margin-left: 30px;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .backlink {
 	text-transform: uppercase;
 	letter-spacing: .09em;
 }
@@ -85,6 +89,7 @@ h5 {
 
 p {
 	line-height: 1.2em;
+	margin-bottom: 5px;
 }
 
 a {
@@ -226,7 +231,136 @@ a {
 	display: none;
 }
 
+// profile
 
+.profile {
+	padding-top: 30px;
+	height: 100vh;
+		
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	
+	h4 {
+		margin-bottom: 5px;
+	}
+	
+	> div { 
+		width: 50%;
+		display: flex;
+		
+		&.join {
+			display: block;
+			
+			> div {
+				display: flex;
+				margin-bottom: 30px;
+				
+				&:last-child {
+					margin-bottom: 10px;
+				
+					p {
+						margin-bottom: 0;
+						
+						&:last-child {
+							margin-left: 0;
+						}
+					}
+				}
+				
+				> * {
+					flex: 0 1 50%;
+					min-width: 320px;
+				}
+			}
+		}
+		
+		> * {
+			flex: 0 1 50%;
+			min-width: 320px;
+		}
+		
+		p {
+			margin-bottom: 30px;
+			
+			&:last-child {
+				margin-bottom: 10px;
+			}
+		}
+		
+		img {
+			width: 100%;
+			height: auto;
+			padding: calc(1em + 8px) 0 0 30px;
+		}
+	}
+	
+	@media only screen and (max-width : 800px) {			
+		height: auto;
+		justify-content: flex-start;
+		
+		padding-top: 10px;
+		max-width: 85vw;
+			
+		> div {
+			flex-direction: column;
+			width: auto;
+			margin-bottom: 30px;
+				
+			p, h4 {
+				margin-left: 10px;
+			}
+				
+			&.join {
+				> div {
+					
+					> * {
+						min-width: 0;
+					}
+						
+					&:last-child {
+						margin-bottom: 10px;
+						
+						p {
+							margin-bottom: 0;
+							
+							&:last-child {
+								margin-left: 10px;
+							}
+						}
+					}
+					
+				}	
+			}		
+				
+			> * {
+				min-width: 0;
+			}
+				
+			img {
+				padding: 0 0 0 10px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+	
+	@media only screen and (max-width : 540px) {		
+		max-width: calc(100vw - 10px);
+		
+		.join > div {
+			flex-direction: column;
+			
+			> * {
+				margin-bottom: 0;
+			}
+			
+			&:first-child > div:first-child {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
 
 
 
@@ -275,6 +409,11 @@ a {
 			> div:not(:first-child),
 			> div > div:first-child {
 				margin-bottom: 30px;
+			}
+			
+			img {
+				width: 100%;
+				padding: 0 30px;
 			}
 		}
 		
@@ -371,6 +510,5 @@ a {
 					display: none;
 				}
 			}
-		}
-		
+		}		
 }

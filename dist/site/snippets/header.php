@@ -1,64 +1,26 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="robots" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
-  <meta name="googlebot" content="<?= ($site->indexing() == '1' && (!in_array($page->template(), ['set', 'featured', 'error', 'imprint']))) ? 'index, follow' : 'noindex, nofollow' ?>">
-
-  <title><?= $site->title() ?></title>
-  <meta name="description" content="<?= $site->description() ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  
-  <?= css('assets/css/Theinhardt-Regular.css') ?>
-  <?= css('assets/css/o.css') ?>
-  
-  <? 
-	  if (!$singleset) {
-			echo js('https://code.jquery.com/jquery-3.3.1.min.js');
-			echo js('assets/js/o.min.js');
-		}
-	?>
-
-	<meta property="og:type" content="website" />
-  <meta property="og:title" content="<?= $site->title() ?>">
-  <meta property="og:site_name" content="Matthias Oertel Photography">
-  <meta property="og:url" content="<?= $site->url() ?>">
-  <meta property="og:description" content="<?= $site->description() ?>">
-  <?= ($site->socialimage()->empty()) ? '' : '<meta property="og:image" content="'.$site->images()->find($site->socialImage())->thumb(array('width' => 800))->url().'">' ?>
-  
-	
-</head>
-
+<? snippet('metaheader') ?>
 <body <?= ($singleset) ? 'class="single"' : '' ?>>
 	<?php if (!$singleset): ?>
 	
   <header class="page-header">
     <div class="row flex">
       <div class="author s">
-        <h1> <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a> </h1>
+        <h1><a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a></h1>
       </div>
       <div class="mail s">
-        <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
+        <h4><a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a></h4>
       </div>
       <div class="phone s">
-        <h4> <?= $site->phone()->html() ?> </h4>
+        <h4><?= $site->phone()->html() ?></h4>
       </div>
       <div class="spacer s">
-        <p></p>
+        <h4><a href="<?= $pages->find('profile')->url() ?>"><?= $pages->find('profile')->title() ?></a></h4>
       </div>
     </div>
 
     <div class="row one">
       <div class="about l">
         <?= $site->about()->kirbytext() ?>
-      </div>
-    </div>
-
-    <div class="row one">
-      <div class="clients l">
-        <h2>Clients</h2>
-        <?= $site->clients()->kirbytext() ?>
       </div>
     </div>
   </header>
@@ -76,16 +38,15 @@
 
     <div id="mobileInfo" class="info">
       <div class="about l">
-        <?= $site->about()->kirbytext() ?>
+        <?= $pages->find('profile')->copy()->kirbytext() ?>
       </div>
-
-      <div class="clients l">
-        <h2>Clients</h2>
-        <?= $site->clients()->kirbytext() ?>
-      </div>
+      
+      <? 
+        if ($pages->find('profile')->hasImages()) { echo '<a href="'.$site->url().'"><img src="'.$pages->find('profile')->images()->first()->thumb(['width' => 800, 'quality' => 75])->url().'" alt="Matthias Oertel"/></a>'; } 
+      ?>
     </div>
-          <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
-      <h4> <?= $site->phone()->html() ?> </h4>
+    <h4> <a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a> </h4>
+    <h4> <?= $site->phone()->html() ?> </h4>
   </header>
   
   <?php else: snippet('miniheader') ?>

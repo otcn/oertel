@@ -1,0 +1,34 @@
+title: Profile
+
+pages: false
+files: true
+
+icon: user
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  copy:
+    label: Copy
+    type: textarea
+    size: large
+    buttons:
+      - link
+      - email
+  
+  publications:
+    label: Publications
+    type: textarea
+    size: large
+    buttons:
+      - link
+
+  clients:
+    label: Clients
+    type: textarea
+    size: large
+    buttons:
+      - link
+    
