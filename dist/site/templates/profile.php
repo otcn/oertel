@@ -33,8 +33,12 @@
 		</div>
 		
 		<div>
-			<p><a href="<?= $site->url() ?>">Return to portfolio</a></p>
-			<p><a href="<?= $pages->find('imprint')->url() ?>" target="_blank">Imprint/Privacy Policy</a></p>
+			<div>
+				<p><a href="<?= $site->url() ?>">Return to portfolio</a></p>
+			</div>
+			<div>
+				<p><a href="<?= $pages->find('imprint')->url() ?>" target="_blank">Imprint/Privacy Policy</a></p>
+			</div>
 		</div>
 	
 	</div>
