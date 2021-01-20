@@ -293,7 +293,9 @@ a {
 		}
 	}
 	
-	@media only screen and (max-width : 800px) {			
+	@media 
+	screen and (max-width: 800px),
+	screen and (max-height: 625px) {			
 		height: auto;
 		justify-content: flex-start;
 		
@@ -357,6 +359,11 @@ a {
 			}
 		}
 	}
+	
+	@media screen and (max-height: 625px) {	
+		max-width: 60vw;
+	}
+	
 }
 
 
