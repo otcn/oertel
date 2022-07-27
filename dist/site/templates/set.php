@@ -1,5 +1,4 @@
 <?php snippet('header', ['singleset' => true]) ?>
-
   <div id="content" class="page-body flex">
 	  
 	  <?php

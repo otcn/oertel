@@ -1,7 +1,9 @@
 title: Site
 
 pages:
-	template: set
+	template:
+    - set
+    - selection
 
 fields:
   title:

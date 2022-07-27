@@ -58,6 +58,22 @@ body {
 	margin-bottom: 5px;
 }
 
+figure img {
+	display: block;
+	margin: 0 auto;
+	
+	cursor: pointer;
+	
+	margin: 0 auto;
+	
+	width: 35%;
+	height: auto;
+	
+	&.landscape {
+		width: 55%;
+	}
+}
+
 
 // footer
 footer {
@@ -165,7 +181,6 @@ a {
 			p, h5 {
 				width: 15%;
 			}
-
 		}
 		
 		.project {
@@ -175,28 +190,28 @@ a {
 		.project:first-child .project-head hr {
 			opacity: 0;
 		}
-	}
-	
-	figure {
-  	min-height: 160px;
-  	display: flex;
-  	flex-direction: column;
-  	justify-content: center;
-  	margin-bottom: 120px;
-			
-		img {	
-			display: block;
-			margin: 0 auto;
 		
-			cursor: pointer;
-		
-			margin: 0 auto;
+		figure {
+			min-height: 160px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-bottom: 120px;
+				
+			img {	
+				display: block;
+				margin: 0 auto;
 			
-			width: 35%;
-			height: auto;
+				cursor: pointer;
 			
-			&.landscape {
-				width: 55%;
+				margin: 0 auto;
+				
+				width: 35%;
+				height: auto;
+				
+				&.landscape {
+					width: 55%;
+				}
 			}
 		}
 	}
@@ -366,6 +381,35 @@ a {
 	
 }
 
+
+// special selection
+
+.customSelection {
+	h5,
+	p {
+		width: 15%;
+		text-transform: none;
+	}
+	
+	figure {
+		max-width: 75vw;
+		margin: 0 auto 35vh;
+		
+		&.portrait,
+		&.square {
+			max-width: 40vw;
+		}
+		
+		&:first-of-type {
+			margin-top: 25vh;
+		}
+		
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
 
 
 // media queries

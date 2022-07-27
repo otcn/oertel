@@ -1,0 +1,20 @@
+title: Selection
+pages: false
+icon: suitcase
+
+fields:
+  title:
+    label: Title
+    type:  text
+    
+  subtitle:
+    label: Subtitle
+    type: text
+    help: Optional subtitle to provide context
+        
+  text:
+    label: Text
+    type:  textarea
+    buttons:
+      - link
+      - email

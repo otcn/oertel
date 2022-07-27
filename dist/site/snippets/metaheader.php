@@ -14,7 +14,7 @@
   <?= css('assets/css/o.css') ?>
   
   <? 
-    if (!$singleset) {
+    if (!$singleset && $page->template() != 'selection') {
       echo js('https://code.jquery.com/jquery-3.3.1.min.js');
       echo js('assets/js/o.min.js');
     }
