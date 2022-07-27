@@ -1,4 +1,4 @@
-<? snippet('metaheader') ?>
+<? snippet('metaheader', ['singleset' => false]) ?>
 <body <?= ($singleset) ? 'class="single"' : '' ?>>
 	<?php if (!$singleset): ?>
 	

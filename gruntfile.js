@@ -1,40 +1,40 @@
 module.exports = function (grunt) {
-
   grunt.initConfig({
-
     pkg: grunt.file.readJSON('package.json'),
-
-    compass: {
-		  dist: {
-		    options: {
-        	banner: '/* MATTHIASOERTEL.DE (1.0/2018) - W.A.F. - https://wearefellows.com */',
-		      sassDir: 'src/',
-		      cssDir: 'dist/assets/css/',
-		      specify: 'src/*.scss',
-		      outputStyle: 'compressed'
-		    }
-		  }
+		
+		sass: {
+			dist: {
+				options: {
+					style: 'compressed'
+				},
+				files: {
+					'dist/assets/css/o.css': ['src/o.scss']
+				}
+			}
 		},
-
-		uglify: {
-		  my_target: {
-		    files: {
-			    'dist/assets/js/o.min.js': ['src/mozoom.js','src/o.js']
-		    }
-		  }
+		
+		terser: {
+			dist: {
+				files: {
+					'dist/assets/js/o.min.js': ['src/o.js']
+				},
+				options: {
+					warnings: 'false'
+				}	
+			},
 		},
 
 		watch: {
 		  css: {
 		    files: 'src/*.scss',
-		    tasks: ['compass'],
+		    tasks: ['sass'],
 		    options: {
 		      livereload: true,
 		    },
 		  },
 		  js: {
 		    files: 'src/*.js',
-		    tasks: ['uglify'],
+		    tasks: ['terser'],
 		    options: {
 		      livereload: true,
 		    },
@@ -43,8 +43,7 @@ module.exports = function (grunt) {
   });
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
- 	grunt.loadNpmTasks('grunt-contrib-compass');
- 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['compass', 'uglify']);
-
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-terser');
+	grunt.registerTask('default', ['sass', 'terser']);
 };

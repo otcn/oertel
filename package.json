@@ -1,15 +1,15 @@
 {
   "name": "MatthiasOertel",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "desription": "Website for Matthias Oertel",
   "main": "index.html",
-  "author": "W.A.F.",
+  "author": "WAF GMBH",
   "License": "MIT",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-uglify": "^3.3.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt": "^1.1.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-terser": "^1.0.0"
   },
   "dependencies": {
     "stickybits": "^3.4.1",
