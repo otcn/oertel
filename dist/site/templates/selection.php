@@ -2,6 +2,7 @@
   
   <div class="page-body customSelection">
     <h5><?= $page->title() ?></h5>
+    <?= ($page->subtitle()->isNotEmpty()) ? '<p>'.$page->subtitle().'</p>' : '' ?>
     <?= $page->text()->kt() ?>
 	 <?php foreach ($page->images() as $image): ?>
     <figure class="<?= $image->orientation() ?>">
