@@ -187,6 +187,7 @@ a {
 			cursor: pointer;
 		}
 		
+		h1 + .project .project-head hr,
 		.project:first-child .project-head hr {
 			opacity: 0;
 		}

@@ -21,6 +21,7 @@
           if ($set->uid() != 'featured') {
             
             // For normal sets
+            echo ($page->clientSelection() == 'true') ? '<h1>Matthias Oertel</h1>' : '';
             foreach ($set->children() as $project) {
               if ($project->isVisible()) {
                 snippet('project', array('project' => $project));

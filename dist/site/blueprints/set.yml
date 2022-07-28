@@ -10,3 +10,10 @@ fields:
   title:
     label: Title
     type:  text
+  
+  clientSelection:
+    label: This set is a special client selection
+    width: 2/3
+    type: toggle
+    text: yes/no
+    default: no

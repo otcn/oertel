@@ -3,8 +3,7 @@ title: Site
 pages:
 	template:
     - set
-    - selection
-
+    
 fields:
   title:
     label: Title
