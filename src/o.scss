@@ -518,11 +518,10 @@ a {
 				}
 			}
 
-			img.landscape, img.portrait, img.square {
+			img.landscape, img.portrait, img.square,
+			figure img.landscape {
 				display: block;
-		
 				cursor: pointer;
-		
 				width: 85%;
 			}
 

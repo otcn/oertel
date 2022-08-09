@@ -9,4 +9,6 @@ dist/panel
 dist/thumbs
 dist/site/accounts/
 dist/assets/avatars/
+dist/assets/css/
+dist/assets/js/
 dist/content/
