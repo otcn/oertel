@@ -3,10 +3,13 @@
 .sass-cache/
 package-lock.json
 dist/.htaccess
-node_modules/
+node_modules
 dist/kirby
 dist/panel
 dist/thumbs
-dist/site/accounts/
-dist/assets/avatars/
-dist/content/
+dist/site/accounts
+dist/assets/avatars
+dist/content
+dist/media
+dist/site/cache
+dist/site/sessions
