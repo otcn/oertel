@@ -1,0 +1,21 @@
+title: Project
+
+pages: false
+preview: false
+files: true
+icon: image
+
+sections:
+  meta:
+    label: Information
+    type: fields
+    fields:
+      text:
+        label: Copy
+        type:  text
+        
+  photos:
+    label: Photos
+    type: files
+    layout: cards
+    size: small

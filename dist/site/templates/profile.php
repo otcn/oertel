@@ -5,7 +5,7 @@
 		<?= ($page->hasImages()) ? '<a href="'.$site->url().'"><img src="'.$page->images()->first()->thumb(['width' => 800, 'quality' => 75])->url().'" alt="Matthias Oertel"/></a>' : '' ?>
 		<div>
 			<h4>Profile</h4>
-			<?= $page->copy()->kirbytext() ?>
+			<?= $page->text()->kirbytext() ?>
 		</div>
 	</div>
 	

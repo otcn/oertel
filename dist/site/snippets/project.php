@@ -2,7 +2,7 @@
   <div class="project-head">
     <hr>
     <h5> <?= $project->title() ?> </h5>
-    <?= $project->copy()->kirbytext() ?>
+    <?= $project->text()->kirbytext() ?>
   </div>
 
   <?php foreach($project->files()->sortBy('sort', 'asc') as $image): ?>

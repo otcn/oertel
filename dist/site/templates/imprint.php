@@ -1,3 +1,3 @@
 <?php snippet('header', ['singleset' => true]) ?>
 	  
-<div class="l"><?= $page->copy()->kirbytext() ?></div>
+<div class="l"><?= $page->text()->kirbytext() ?></div>

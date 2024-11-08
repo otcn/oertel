@@ -1,0 +1,44 @@
+title: Profile
+
+pages: false
+files: true
+
+icon: user
+
+columns:
+  main:
+    width: 2/3
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            label: Copy
+            type: textarea
+            buttons:
+              - link
+              - email
+  
+          publications:
+            label: Publications
+            type: textarea
+            buttons:
+              - link
+
+          clients:
+            label: Clients
+            type: textarea
+            buttons:
+              - link
+    
+  sidebar:
+    width: 1/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          profileImage:
+            label: Profile image
+            layout: cards
+            type: files
+            max: 1    

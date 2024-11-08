@@ -1,4 +1,4 @@
-<? snippet('metaheader') ?>
+<? snippet('metaheader', ['singleset' => $singleset]) ?>
 <body <?= ($singleset) ? 'class="single"' : '' ?>>
 	<?php if (!$singleset): ?>
 	
@@ -38,7 +38,7 @@
 
     <div id="mobileInfo" class="info">
       <div class="about l">
-        <?= $pages->find('profile')->copy()->kirbytext() ?>
+        <?= $pages->find('profile')->text()->kirbytext() ?>
       </div>
       
       <? 

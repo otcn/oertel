@@ -1,0 +1,18 @@
+title: Set
+
+options:
+  delete: true
+  changeTemplate: false
+  changeSlug: true
+  changeTitle: true
+
+files: true
+pages: true
+
+sections:
+  overview:
+    label: Projects in this set
+    type: pages
+    search: true
+    limit: 80
+    template: project

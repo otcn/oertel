@@ -7,7 +7,7 @@
 			// still needs error handling in case no images are visible or none are selected for selection
 			$portfolioImages = new Files($page);
 			
-    	foreach ($site->grandChildren()->visible() as $project) {
+    	foreach ($site->grandChildren()->published() as $project) {
 	  	  $portfolioImages->data = array_merge($portfolioImages->data, $project->images()->data);
     	}
 			
@@ -23,7 +23,7 @@
             
             // For normal sets
             foreach ($set->children() as $project) {
-              if ($project->isVisible()) {
+              if ($project->ispublished()) {
                 snippet('project', array('project' => $project));
               }
             }
@@ -36,7 +36,7 @@
 							<div class="project-head">
               	<hr>
               	<h5>Matthias Oertel</h5>
-								<p><?= $site->pages()->find('featured')->subline() ?></p>
+								<p><?= $site->featuredImagesSubline() ?></p>
             	</div>
 	          
 	          <?php

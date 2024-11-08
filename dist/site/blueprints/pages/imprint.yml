@@ -6,10 +6,8 @@ files: false
 icon: file
 
 fields:
-  title:
-    label: Title
-    type:  text
-
-  copy:
+  text:
     label: Copy
-    type:  textarea
+    type: textarea
+    buttons:
+      - link

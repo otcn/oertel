@@ -1,52 +1,108 @@
 title: Site
 
-pages:
-	template: set
+tabs:
+  sets:
+    label: Sets
+    columns:
+      main:
+        width: 1/1
+        sections:
+          sets:
+            type: pages
+            template: set
+            layout: cards
+            image:
+              query: page.children.first.image
+              cover: true
+  
+  featured:
+    label: Featured images
+    sections:
+      content:
+        type: fields
+        fields:
+          featuredImagesSubline:
+            type: text
+            label: Subline
+            help: Subline shown as context for the selected images shown in the site intro
+            max: 20
+      selection:
+        type: fields
+        fields:
+          featuredImages:
+            label: Featured images
+            help: Images selected here will be shown in the site intro
+            type: files
+            max: 8
+            
+  
+  pages:
+    label: Pages
+    sections:
+      pages:
+        type: pages
+        template:
+          - default
+          - error
+          - featured
+          - profile
+          - imprint
+        
+  settings:
+    label: Settings
+    sections:
+      settingfields:
+        type: fields
+        fields:
+          title:
+            label: Title
+            type:  text
 
-fields:
-  title:
-    label: Title
-    type:  text
+          author:
+            label: Author
+            type:  text
+          
+          email:
+            label: Email
+            type: email
+            width: 1/2
 
-  author:
-    label: Author
-    type:  text
+          phone:
+            label: Phone
+            type: tel
+            width: 1/2
 
-  email:
-    label: Email
-    type: email
-    width: 1/2
-
-  phone:
-    label: Phone
-    type: tel
-    width: 1/2
-
-  about:
-    label: About
-    type:  textarea
-    buttons:
-      - link
+          about:
+            label: About
+            type:  textarea
+            buttons:
+              - link
     
-  clients:
-    label: Clients
-    type:  textarea
-    buttons:
-      - link
-
-	socialImage:
-		label: Social image
-		type: image
-		help: Preview image shown in social media when the site URL is posted
-	
-	description:
-		label: SEO description
-		type: textarea
-		buttons: false
-		help: Short description for search engines
-
-	indexing:
-		label: Search engine indexing
-		type: checkbox
-		text: Allow search engines to index this site
-		help: Toggles indexing by search engines. Does not apply to single set pages, as they are always hidden from search engines.
+          clients:
+            label: Clients
+            type:  textarea
+            buttons:
+              - link
+              
+      seo:
+        type: fields
+        fields:
+          socialImage:
+            label: Social image
+            type: files
+            max: 1
+            help: Preview image shown in social media when the site URL is posted
+          
+          description:
+            label: SEO description
+            type: textarea
+            buttons: false
+            help: Short description for search engines
+          
+          indexing:
+            label: Search engine indexing
+            type: toggle
+            text:
+              - "Don't allow search engines to index this site"
+              - "Allow search engines to index this site"
+            help: Toggles indexing by search engines. Does not apply to single set pages, as they are always hidden from search engines.
