@@ -33,7 +33,10 @@ tabs:
             label: Featured images
             help: Images selected here will be shown in the site intro
             type: files
+            layout: cards
+            size: small
             max: 8
+            query: site.index.files
             
   
   pages:
@@ -43,7 +46,6 @@ tabs:
         type: pages
         template:
           - default
-          - error
           - featured
           - profile
           - imprint
