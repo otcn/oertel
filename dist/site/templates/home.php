@@ -3,15 +3,13 @@
   <div id="content" class="page-body flex">
 	  
 	  <?php
-			// grab a full set of all used images, just in case
-			// still needs error handling in case no images are visible or none are selected for selection
-			$portfolioImages = new Files($page);
+			$portfolioImages = new Files();
 			
-    	foreach ($site->grandChildren()->published() as $project) {
+    	foreach ($site->grandChildren()->listed() as $project) {
 	  	  $portfolioImages->data = array_merge($portfolioImages->data, $project->images()->data);
     	}
 			
-			foreach ($pages->filter('template', 'set')->published() as $set): ?>
+			foreach ($pages->filter('template', 'set')->listed() as $set): ?>
     
       <section class="set s" id="<?= $set->uid() ?>">
 	      
@@ -25,7 +23,7 @@
         <?php
 	          // For regular sets
             foreach ($set->children() as $project) {
-              if ($project->ispublished()) {
+              if ($project->listed()) {
                 snippet('project', array('project' => $project));
               }
             }
@@ -42,13 +40,12 @@
             	</div>
 	          
 	          <?php
-            foreach ($site->featuredImages()->toFiles() as $image) {
-              if ($image !== null) {
-                snippet('image', array('url' => $image->thumb('large')->url(), 'slug' => $image->name(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $site->featuredImagesSubline() ));
-               }
-            }						
+              foreach ($site->featuredImages()->toFiles() as $image) {
+                if ($image !== null) {
+                  snippet('image', array('url' => $image->thumb('large')->url(), 'slug' => $image->name(), 'orientation' => $image->orientation(), 'height' => $image->height(), 'width' => $image->width(), 'ratio' => $image->height()/$image->width(), 'project' => $image->page(), 'set' => 'featured', 'hoverTitle' => $site->featuredImagesSubline() ));
+                }
+              }						
 						?>
-						
             </div>
       </section>
   </div>
