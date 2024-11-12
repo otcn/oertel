@@ -35,6 +35,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.hidden {
+	opacity: 0;
+}
+
 .flex {
 	display: flex;
 }
@@ -290,6 +294,7 @@ a {
 			width: 100%;
 			height: auto;
 			padding: calc(1em + 8px) 0 0 30px;
+			display: block;
 		}
 	}
 	

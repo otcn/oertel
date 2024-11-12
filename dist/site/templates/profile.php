@@ -4,7 +4,7 @@
 	<div>
 		<?= ($page->hasImages()) ? '<a href="'.$site->url().'"><img src="'.$page->images()->first()->thumb(['width' => 800, 'quality' => 75])->url().'" alt="Matthias Oertel"/></a>' : '' ?>
 		<div>
-			<h4>Profile</h4>
+			<h4></h4>
 			<?= $page->text()->kirbytext() ?>
 		</div>
 	</div>
@@ -12,7 +12,7 @@
 	<div class="join">
 		<div>
 			<div>
-				<h4>Currently accepting new bookings</h4>
+				<h4 class="hidden">Looking forward to hear from you</h4>
 				<p>
 					<?= $site->phone()->html() ?><br/>
 					<a href="mailto:<?= $site->email()->html() ?>"><?= $site->email()->html() ?></a>
